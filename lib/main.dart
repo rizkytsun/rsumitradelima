@@ -65,9 +65,9 @@ class MyApp extends StatelessWidget {
                           borderSide: BorderSide(color : Colors.black87)
                         ),
                         prefixIcon: Icon(Icons.person, size: 30,),
-                        hintText: "Masukkan Nama Lengkap",
+                        hintText: "Masukkan Nomor RM",
                         hintStyle: TextStyle(color: Colors.grey),
-                        labelText: "Masukkan Nama Lengkap",
+                        labelText: "Nomor RM",
                         labelStyle: TextStyle(color: Colors.black87),
                       ),
                     ),
@@ -82,9 +82,9 @@ class MyApp extends StatelessWidget {
                           borderSide: BorderSide(color : Colors.black87)
                         ),
                         prefixIcon: Icon(Icons.lock, size: 30,),
-                        hintText: "Masukkan Nomor Rekam Medis",
+                        hintText: "Masukkan NIK KTP",
                         hintStyle: TextStyle(color: Colors.grey),
-                        labelText: "Masukkan Nomor Rekam Medis",
+                        labelText: "NIK KTP",
                         labelStyle: TextStyle(color: Colors.black87),
                       ),
                     ),
