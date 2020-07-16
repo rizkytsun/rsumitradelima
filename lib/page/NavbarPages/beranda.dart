@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rsumitradelima/page/jadwal_dokter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -127,7 +128,10 @@ static int timelinePage = 1;
                       onTap: () => _launchURL(),
                       child: ButtonKotakHome(assetKeSvg: 'assets/home/pendaftaran.svg', text: 'Pendaftaran Online',)
                     ),
-                    ButtonKotakHome(assetKeSvg: 'assets/home/jadwal-dokter.svg', text: 'Jadwal Dokter',),
+                    InkWell(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => JadwalDokter()),),
+                      child: ButtonKotakHome(assetKeSvg: 'assets/home/jadwal-dokter.svg', text: 'Jadwal Dokter',)
+                    ),
                     ButtonKotakHome(assetKeSvg: 'assets/home/tempat-tidur.svg', text: 'Tempat Tidur',),
                     ButtonKotakHome(assetKeSvg: 'assets/home/bantuan-layanan.svg', text: 'Bantuan Layanan',),
                   ],

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 //Constants
 class MyConstants {
-  final Color colorBPJSblue = Color(0xFF284b8c);
-  final Color colorBPJSgreen = Color(0xFF00a859);
-  final Color colorBPJSbg = Color(0xFFd7d7f4);
+  final Color colorRSMDblue = Color(0xFF284b8c);
+  final Color colorRSMDgreen = Color(0xFF00a859);
+  final Color colorRSMDbg = Color(0xFFd7d7f4);
 }
 
 class MyAppBar extends StatelessWidget {
@@ -152,7 +152,7 @@ class MyTextField extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Container(
-            color: MyConstants().colorBPJSblue,
+            color: MyConstants().colorRSMDblue,
             height: double.infinity,
           ),
           Padding(

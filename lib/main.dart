@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyConstants().colorBPJSbg,
+      backgroundColor: MyConstants().colorRSMDbg,
       body: _getBody(_selectedIndex) ,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15.0),
