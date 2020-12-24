@@ -57,6 +57,16 @@ class _BerandaPageState extends State<BerandaPage> {
     }
   }
 
+  _launchJurnal() async {
+    const url =
+        'http://www.rsumitradelima.com/#cbp=http://www.rsumitradelima.com/index.php/Tampil/tampebook';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -230,10 +240,12 @@ class _BerandaPageState extends State<BerandaPage> {
                           assetKeSvg: 'assets/home/rating.svg',
                           text: 'Rate Kepuasan',
                         )),
-                    ButtonKotakHome(
-                      assetKeSvg: 'assets/home/library.svg',
-                      text: 'Elektronik Jurnal',
-                    ),
+                    InkWell(
+                        onTap: () => _launchJurnal(),
+                        child: ButtonKotakHome(
+                          assetKeSvg: 'assets/home/library.svg',
+                          text: 'Elektronik Jurnal',
+                        )),
                   ],
                 )
               ],
