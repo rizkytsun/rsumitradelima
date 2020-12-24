@@ -30,8 +30,26 @@ class _BerandaPageState extends State<BerandaPage> {
     }
   }
 
-  _launchWA() async {
+  _launchWA_Hotline() async {
     const url = 'https://wa.me/%3C6281340001415%3E';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchMail_Humar() async {
+    const url = 'mailto:rsumitradelimahumar@gmail.com';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchMaps() async {
+    const url = 'https://goo.gl/maps/VSq3rNQtqHZRBtLy9';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -84,8 +102,10 @@ class _BerandaPageState extends State<BerandaPage> {
                       horizontal: 30.0, vertical: 15.0),
                   child: Text(
                     'TimeLine',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24.0,
+                        fontFamily: 'OpenSans'),
                   ),
                 ),
                 Container(
@@ -193,27 +213,26 @@ class _BerandaPageState extends State<BerandaPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     InkWell(
-                        onTap: () => _launchWA(),
+                        onTap: () => _launchWA_Hotline(),
                         child: ButtonKotakHome(
                           assetKeSvg: 'assets/home/hotline.svg',
                           text: 'Layanan Hotline',
                         )),
                     InkWell(
-                        onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (_) => JadwalDokter()),
-                            ),
+                        onTap: () => _launchMail_Humar(),
                         child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/jadwal-dokter.svg',
-                          text: 'Jadwal Dokter',
+                          assetKeSvg: 'assets/home/email.svg',
+                          text: 'layanan Pengaduan',
+                        )),
+                    InkWell(
+                        onTap: () => _launchMaps(),
+                        child: ButtonKotakHome(
+                          assetKeSvg: 'assets/home/rating.svg',
+                          text: 'Rate Kepuasan',
                         )),
                     ButtonKotakHome(
-                      assetKeSvg: 'assets/home/tempat-tidur.svg',
-                      text: 'Tempat Tidur',
-                    ),
-                    ButtonKotakHome(
-                      assetKeSvg: 'assets/home/bantuan-layanan.svg',
-                      text: 'Bantuan Layanan',
+                      assetKeSvg: 'assets/home/library.svg',
+                      text: 'Elektronik Jurnal',
                     ),
                   ],
                 )
