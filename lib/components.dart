@@ -5,7 +5,7 @@ class MyConstants {
   final Color colorRSMDblue = Color(0xFF284b8c);
   final Color colorRSMDgreen = Color(0xFF00a859);
   final Color colorRSMDbg = Color(0xFFd7d7f4);
-  final Color colorJadwalDR = Color(0xFF6BC7E6);
+  final Color colorJadwalDR = Color(0xFF8DD1EA);
   final Color colorBeranda = Color(0xFFA15757);
 }
 
