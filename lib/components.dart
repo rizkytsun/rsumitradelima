@@ -5,6 +5,8 @@ class MyConstants {
   final Color colorRSMDblue = Color(0xFF284b8c);
   final Color colorRSMDgreen = Color(0xFF00a859);
   final Color colorRSMDbg = Color(0xFFd7d7f4);
+  final Color colorJadwalDR = Color(0xFF6BC7E6);
+  final Color colorBeranda = Color(0xFFA15757);
 }
 
 class MyAppBar extends StatelessWidget {
@@ -63,7 +65,10 @@ class MyButton extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: Center(
-              child: Text(text, style: TextStyle(color: Colors.white),),
+              child: Text(
+                text,
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
         ),
@@ -116,14 +121,18 @@ class MyActionButton extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(35.0), 
+          borderRadius: BorderRadius.circular(35.0),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Flexible(child: Text(text, overflow: TextOverflow.ellipsis,)),
+                Flexible(
+                    child: Text(
+                  text,
+                  overflow: TextOverflow.ellipsis,
+                )),
                 icon,
               ],
             ),
@@ -156,13 +165,12 @@ class MyTextField extends StatelessWidget {
             height: double.infinity,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                labelText: labelText
-              ),
+                  border: InputBorder.none, labelText: labelText),
             ),
           )
         ],

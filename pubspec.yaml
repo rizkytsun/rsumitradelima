@@ -63,7 +63,21 @@ flutter:
     - assets/timeline.png
     - assets/fitur_komplain.png
     - assets/home/
-
+    - assets/jadwaldokter/
+    - assets/jadwaldokter/kandungan.png
+    - assets/jadwaldokter/mata.png
+    - assets/jadwaldokter/bedah.png
+    - assets/jadwaldokter/syaraf.png
+    - assets/jadwaldokter/anak.png
+    - assets/jadwaldokter/gigi.png
+    - assets/jadwaldokter/bedahplastik.png
+    - assets/jadwaldokter/dalam.png
+    - assets/jadwaldokter/rehab.png
+    - assets/jadwaldokter/ortho.png
+    - assets/jadwaldokter/paru.png
+    - assets/jadwaldokter/urologi.png
+    - assets/jadwaldokter/tht.png
+    - assets/jadwaldokter/jiwa.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -79,6 +93,9 @@ flutter:
     - family: BauhausReguler
       fonts:
         - asset: assets/fonts/Bauhaus.ttf
+    - family: Emirates
+      fonts:
+        - asset: assets/fonts/Emirates.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

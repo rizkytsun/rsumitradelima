@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rsumitradelima/page/jadwal_dokter.dart';
+import 'package:rsumitradelima/page/daftar_poli.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rsumitradelima/components.dart';
 
 class BerandaPage extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _BerandaPageState extends State<BerandaPage> {
   );
 
   _launchWebApp() async {
-    const url = 'http://rsumitradelima.com:85/webapps/epasien';
+    const url = 'http://rsumitradelima.com:8080/webapps/epasien';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -75,9 +76,9 @@ class _BerandaPageState extends State<BerandaPage> {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.white60,
               borderRadius:
-                  BorderRadius.vertical(bottom: Radius.circular(35.0))),
+                  BorderRadius.vertical(bottom: Radius.circular(0.0))),
           child: SafeArea(
             child: Padding(
               padding: EdgeInsets.all(5.0),
@@ -85,14 +86,14 @@ class _BerandaPageState extends State<BerandaPage> {
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset(
-                    'assets/rsmd_logo.png',
-                    width: (MediaQuery.of(context).size.width / 5) - 35.0,
-                  ),
+                  // Image.asset(
+                  //   'assets/rsmd_logo.png',
+                  //   width: (MediaQuery.of(context).size.width / 5) - 35.0,
+                  // ),
                   Text(
                     " RSU MITRA DELIMA",
                     style:
-                        TextStyle(fontSize: 15, fontFamily: 'BauhausReguler'),
+                        TextStyle(fontSize: 30, fontFamily: 'BauhausReguler'),
                   )
                 ],
               )),
@@ -111,7 +112,7 @@ class _BerandaPageState extends State<BerandaPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 30.0, vertical: 15.0),
                   child: Text(
-                    'TimeLine',
+                    'Berita Terbaru',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24.0,
@@ -123,7 +124,7 @@ class _BerandaPageState extends State<BerandaPage> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        height: 200.0,
+                        height: 250.0,
                         child: PageView.builder(
                           controller: controller,
                           onPageChanged: (index) =>
@@ -133,7 +134,7 @@ class _BerandaPageState extends State<BerandaPage> {
                             return Padding(
                               padding: EdgeInsets.symmetric(horizontal: 30.0),
                               child: Image.asset(
-                                'assets/timeline.png',
+                                'assets/berita.jpeg',
                                 width: double.infinity,
                               ),
                             );
@@ -200,19 +201,20 @@ class _BerandaPageState extends State<BerandaPage> {
                     InkWell(
                         onTap: () => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (_) => JadwalDokter()),
+                              MaterialPageRoute(
+                                  builder: (_) => DaftarPoliklinik()),
                             ),
                         child: ButtonKotakHome(
                           assetKeSvg: 'assets/home/jadwal-dokter.svg',
-                          text: 'Jadwal Dokter',
+                          text: 'Daftar Poliklinik',
                         )),
                     ButtonKotakHome(
                       assetKeSvg: 'assets/home/tempat-tidur.svg',
                       text: 'Tempat Tidur',
                     ),
                     ButtonKotakHome(
-                      assetKeSvg: 'assets/home/bantuan-layanan.svg',
-                      text: 'Bantuan Layanan',
+                      assetKeSvg: 'assets/home/antrian.svg',
+                      text: 'Antrian Poliklinnik',
                     ),
                   ],
                 ),
@@ -225,8 +227,8 @@ class _BerandaPageState extends State<BerandaPage> {
                     InkWell(
                         onTap: () => _launchWA_Hotline(),
                         child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/hotline.svg',
-                          text: 'Layanan Hotline',
+                          assetKeSvg: 'assets/home/rating.svg',
+                          text: 'Kuisioner',
                         )),
                     InkWell(
                         onTap: () => _launchMail_Humar(),
@@ -237,7 +239,7 @@ class _BerandaPageState extends State<BerandaPage> {
                     InkWell(
                         onTap: () => _launchMaps(),
                         child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/rating.svg',
+                          assetKeSvg: 'assets/home/rate.svg',
                           text: 'Rate Kepuasan',
                         )),
                     InkWell(

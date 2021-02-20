@@ -18,20 +18,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Login(
-
-      ),
+      home: Login(),
     );
   }
 }
 
-  class Login extends StatefulWidget {
-    @override
-    _LoginState createState() => _LoginState();
-  }
-  
-  class _LoginState extends State<Login> {
-    
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   // untuk navbar
   int _selectedIndex = 0;
 
@@ -58,10 +55,16 @@ class MyApp extends StatelessWidget {
 
   _getBody(int i) {
     switch (i) {
-      case 0: return BerandaPage();
-      case 1: return BeritaPage();
-      case 2: return Center(child: Text('Hello World'),);
-      case 3: return AdminPage();
+      case 0:
+        return BerandaPage();
+      case 1:
+        return BeritaPage();
+      case 2:
+        return Center(
+          child: Text('Hello World'),
+        );
+      case 3:
+        return AdminPage();
         break;
     }
   }
@@ -69,8 +72,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyConstants().colorRSMDbg,
-      body: _getBody(_selectedIndex) ,
+      backgroundColor: MyConstants().colorJadwalDR,
+      body: _getBody(_selectedIndex),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Container(
@@ -114,13 +117,11 @@ class MyApp extends StatelessWidget {
                     setState(() {
                       _selectedIndex = index;
                     });
-                  }
-                ),
-              ),
+                  }),
             ),
           ),
         ),
-      );
-    }
+      ),
+    );
   }
-
+}
