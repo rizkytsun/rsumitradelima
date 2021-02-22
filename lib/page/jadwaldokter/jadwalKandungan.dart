@@ -29,17 +29,17 @@ class _JadwalKandunganState extends State<JadwalKandungan> {
             gambar: "assets/dokter/widiyanti.png",
             nama: "dr. Widiyanti, Sp.OG",
             jadwal: "Senin & Kamis",
-            jadwala: "        : 10.00 - Selesai",
+            jadwala: " : 10.00 - Selesai",
             jadwal2: "Sabtu",
-            jadwal2a: "                         : 12.00 - Selesai",
+            jadwal2a: " : 12.00 - Selesai",
           ),
           ListDokter(
             gambar: "assets/dokter/widi.png",
             nama: "dr. Widi Hatmaka, Sp.OG",
             jadwal: "Senin & Kamis",
-            jadwala: "        : 10.00 - Selesai",
+            jadwala: " : 10.00 - Selesai",
             jadwal2: "Sabtu",
-            jadwal2a: "                         : 12.00 - Selesai",
+            jadwal2a: " : 12.00 - Selesai",
           ),
         ],
       ),
@@ -80,64 +80,67 @@ class ListDokter extends StatelessWidget {
                 offset: Offset(0, 4),
               )
             ]),
-        child: new Center(
-          child: new Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(1.0),
+        child: new Row(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: CircleAvatar(
+                radius: 40,
                 child: CircleAvatar(
                   radius: 40,
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage(gambar),
-                  ),
+                  backgroundImage: AssetImage(gambar),
                 ),
               ),
-              new Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: new Center(
-                    child: new Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        new Text(
-                          nama,
-                          style: new TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        Row(
-                          children: <Widget>[
-                            new Text(
-                              jadwal,
-                              style: new TextStyle(
-                                  fontSize: 15.0, color: Colors.grey),
-                            ),
-                            new Text(
-                              jadwala,
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            new Text(
-                              jadwal2,
-                              style: new TextStyle(
-                                  fontSize: 15.0, color: Colors.grey),
-                            ),
-                            new Text(
-                              jadwal2a,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  new Text(
+                    nama,
+                    style: new TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
-                ),
+                  SizedBox(height: 10,),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      new Text(
+                        jadwal,
+                        style: new TextStyle(
+                            fontSize: 15.0, color: Colors.grey),
+                      ),
+                      // Expanded(),
+                      new Text(
+                        jadwala, style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      new Text(
+                        jadwal2, 
+                        style: new TextStyle(
+                            fontSize: 15.0, color: Colors.grey),
+                      ),
+                      new Text(
+                        jadwal2a, style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
