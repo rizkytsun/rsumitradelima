@@ -26,14 +26,14 @@ class _JadwalAnakState extends State<JadwalAnak> {
       body: new ListView(
         children: <Widget>[
           ListDokter(
-            gambar: "assets/jadwaldokter/anak.png",
+            gambar: "assets/dokter/niluh.png",
             nama: "dr. Ni Luh Putu Herli Mastuti, Sp.A",
             jadwal: "Senin, Kamis & Jum'at : 15.00 - 17.00",
             jadwal2: "Sabtu : 13.00 - 15.00",
           ),
           ListDokter(
-            gambar: "assets/jadwaldokter/anak.png",
-            nama: "dr. Dewi Nurindah, Sp.A. M.Biomed",
+            gambar: "assets/dokter/dewi.png",
+            nama: "dr. Dewi Nurindah, Sp.A",
             jadwal: "Senin & Rabu : 18.30 - Selesai",
             jadwal2: "",
           ),
@@ -71,9 +71,15 @@ class ListDokter extends StatelessWidget {
         child: new Center(
           child: new Row(
             children: <Widget>[
-              Image.asset(
-                gambar,
-                width: (MediaQuery.of(context).size.width / 3) - 35.0,
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: CircleAvatar(
+                  radius: 50,
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage(gambar),
+                  ),
+                ),
               ),
               new Container(
                 child: new Center(
