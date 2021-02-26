@@ -106,7 +106,9 @@ class ListDokter extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,12 +116,13 @@ class ListDokter extends StatelessWidget {
                     children: <Widget>[
                       new Text(
                         jadwal,
-                        style: new TextStyle(
-                            fontSize: 15.0, color: Colors.grey),
+                        style:
+                            new TextStyle(fontSize: 15.0, color: Colors.grey),
                       ),
                       // Expanded(),
                       new Text(
-                        jadwala, style: TextStyle(color: Colors.grey),
+                        jadwala,
+                        style: TextStyle(color: Colors.grey),
                       )
                     ],
                   ),
@@ -128,12 +131,13 @@ class ListDokter extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       new Text(
-                        jadwal2, 
-                        style: new TextStyle(
-                            fontSize: 15.0, color: Colors.grey),
+                        jadwal2,
+                        style:
+                            new TextStyle(fontSize: 15.0, color: Colors.grey),
                       ),
                       new Text(
-                        jadwal2a, style: TextStyle(color: Colors.grey),
+                        jadwal2a,
+                        style: TextStyle(color: Colors.grey),
                       )
                     ],
                   ),
