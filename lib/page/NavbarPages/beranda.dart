@@ -192,22 +192,15 @@ class _BerandaPageState extends State<BerandaPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    InkWell(
-                        onTap: () => _launchWebApp(),
-                        child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/pendaftaran.svg',
-                          text: 'Pendaftaran Online',
-                        )),
-                    InkWell(
-                        onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => DaftarPoliklinik()),
-                            ),
-                        child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/jadwal-dokter.svg',
-                          text: 'Daftar Poliklinik',
-                        )),
+                    ButtonKotakHome(
+                      assetKeSvg: 'assets/home/pendaftaran.svg',
+                      text: 'Pendaftaran Online',
+                    ),
+                    ButtonKotakHome(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DaftarPoliklinik()),),
+                      assetKeSvg: 'assets/home/jadwal-dokter.svg',
+                      text: 'Daftar Poliklinik',
+                    ),
                     ButtonKotakHome(
                       assetKeSvg: 'assets/home/tempat-tidur.svg',
                       text: 'Tempat Tidur',
@@ -221,34 +214,29 @@ class _BerandaPageState extends State<BerandaPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    InkWell(
-                        onTap: () => _launchWA_Hotline(),
-                        child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/rating.svg',
-                          text: 'Kuisioner',
-                        )),
-                    InkWell(
-                        onTap: () => _launchMail_Humar(),
-                        child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/email.svg',
-                          text: 'layanan Pengaduan',
-                        )),
-                    InkWell(
-                        onTap: () => _launchMaps(),
-                        child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/rate.svg',
-                          text: 'Rate Kepuasan',
-                        )),
-                    InkWell(
-                        onTap: () => _launchJurnal(),
-                        child: ButtonKotakHome(
-                          assetKeSvg: 'assets/home/library.svg',
-                          text: 'Elektronik Jurnal',
-                        )),
-                  ],
+                IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      ButtonKotakHome(
+                        assetKeSvg: 'assets/home/rating.svg',
+                        text: 'Kuisioner',
+                      ),
+                      ButtonKotakHome(
+                        assetKeSvg: 'assets/home/email.svg',
+                        text: 'layanan Pengaduan',
+                      ),
+                      ButtonKotakHome(
+                        assetKeSvg: 'assets/home/rate.svg',
+                        text: 'Rate Kepuasan',
+                      ),
+                      ButtonKotakHome(
+                        onTap: (){},
+                        assetKeSvg: 'assets/home/library.svg',
+                        text: 'Elektronik Jurnal',
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -260,8 +248,9 @@ class _BerandaPageState extends State<BerandaPage> {
 }
 
 class ButtonKotakHome extends StatelessWidget {
-  ButtonKotakHome({this.assetKeSvg, this.text});
+  ButtonKotakHome({this.onTap, this.assetKeSvg, this.text});
 
+  final VoidCallback onTap;
   final String assetKeSvg;
   final String text;
 
@@ -280,25 +269,33 @@ class ButtonKotakHome extends StatelessWidget {
             ),
           ]),
       width: MediaQuery.of(context).size.width / 4 - 10.0,
-      padding: EdgeInsets.all(15),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Container(
-              child: SvgPicture.asset(
-            assetKeSvg,
-            width: MediaQuery.of(context).size.width / 4 - 50.0,
-          )),
-          SizedBox(
-            height: 10,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  child: SvgPicture.asset(
+                  assetKeSvg,
+                  width: (MediaQuery.of(context).size.width / 4) - 10.0 - 30.0,
+                )),
+                SizedBox(
+                  height: 10,
+                ),
+                Flexible(
+                    child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                )),
+              ],
+            ),
           ),
-          Flexible(
-              child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-          )),
-        ],
+        ),
       ),
     );
   }
