@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/page/daftar_poli.dart';
+import 'package:rsumitradelima/page/tempat_tidur.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rsumitradelima/components.dart';
@@ -202,6 +203,7 @@ class _BerandaPageState extends State<BerandaPage> {
                       text: 'Daftar Poliklinik',
                     ),
                     ButtonKotakHome(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TempatTidur()),),
                       assetKeSvg: 'assets/home/tempat-tidur.svg',
                       text: 'Tempat Tidur',
                     ),
