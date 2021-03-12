@@ -4,34 +4,36 @@ import 'package:rsumitradelima/page/daftar_poli.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "jadwalRehab",
-    home: new JadwalRehab(),
+    title: "jadwalJiwa",
+    home: new JadwalJiwa(),
   ));
 }
 
-class JadwalRehab extends StatefulWidget {
+class JadwalJiwa extends StatefulWidget {
   @override
-  _JadwalRehabState createState() => _JadwalRehabState();
+  _JadwalJiwaState createState() => _JadwalJiwaState();
 }
 
-class _JadwalRehabState extends State<JadwalRehab> {
+class _JadwalJiwaState extends State<JadwalJiwa> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: new Text('Poliklinik Spesialis Rehab Medik'),
+        title: new Text('Poliklinik Spesialis Jiwa'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
       body: new ListView(
         children: <Widget>[
           ListDokter(
-            gambar: "assets/dokter/user.png",
-            nama: "dr. Rahmad, Sp. KFR",
-            jadwal1_hari: "Senin - Sabtu",
-            jadwal1_jam: "08.00 - 18.00",
-            jadwal2_hari: "",
-            jadwal2_jam: "",
+            gambar: "assets/dokter/widiyanti.png",
+            nama: "dr. Tutik Nur Kasiana, Sp. KJ",
+            jadwal1_hari: "Rabu",
+            jadwal1_jam: "19.00 - Selesai",
+            jadwal2_hari: "Sabtu",
+            jadwal2_jam: "13.00 - 17.00",
+            jadwal3_hari: "Minggu",
+            jadwal3_jam: "14.00 - 16.00",
           ),
           // ListDokter(
           //   gambar: "assets/dokter/widi.png",
@@ -54,7 +56,9 @@ class ListDokter extends StatelessWidget {
       this.jadwal1_hari,
       this.jadwal1_jam,
       this.jadwal2_hari,
-      this.jadwal2_jam});
+      this.jadwal2_jam,
+      this.jadwal3_hari,
+      this.jadwal3_jam});
 
   final String gambar;
   final String nama;
@@ -62,6 +66,8 @@ class ListDokter extends StatelessWidget {
   final String jadwal1_jam;
   final String jadwal2_hari;
   final String jadwal2_jam;
+  final String jadwal3_hari;
+  final String jadwal3_jam;
 
   @override
   Widget build(BuildContext context) {
@@ -127,6 +133,23 @@ class ListDokter extends StatelessWidget {
                     ),
                     Text(
                       jadwal2_jam,
+                      style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                    )
+                  ],
+                ),
+                Divider(color: Colors.grey[600]),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Flexible(
+                      child: Text(
+                        jadwal3_hari,
+                        style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                      ),
+                    ),
+                    Text(
+                      jadwal3_jam,
                       style: TextStyle(fontSize: 14.0, color: Colors.grey),
                     )
                   ],

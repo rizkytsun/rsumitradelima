@@ -4,42 +4,50 @@ import 'package:rsumitradelima/page/daftar_poli.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "jadwalRehab",
-    home: new JadwalRehab(),
+    title: "jadwalUrologi",
+    home: new JadwalUrologi(),
   ));
 }
 
-class JadwalRehab extends StatefulWidget {
+class JadwalUrologi extends StatefulWidget {
   @override
-  _JadwalRehabState createState() => _JadwalRehabState();
+  _JadwalUrologiState createState() => _JadwalUrologiState();
 }
 
-class _JadwalRehabState extends State<JadwalRehab> {
+class _JadwalUrologiState extends State<JadwalUrologi> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: new Text('Poliklinik Spesialis Rehab Medik'),
+        title: new Text('Poliklinik Spesialis Syaraf'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
       body: new ListView(
         children: <Widget>[
           ListDokter(
             gambar: "assets/dokter/user.png",
-            nama: "dr. Rahmad, Sp. KFR",
-            jadwal1_hari: "Senin - Sabtu",
-            jadwal1_jam: "08.00 - 18.00",
+            nama: "dr. Medianto, Sp. U",
+            jadwal1_hari: "Senin & Kamis",
+            jadwal1_jam: "16.30 - 20.00",
             jadwal2_hari: "",
             jadwal2_jam: "",
           ),
           // ListDokter(
-          //   gambar: "assets/dokter/widi.png",
-          //   nama: "dr. Widi Hatmaka, Sp. OG",
-          //   jadwal1_hari: "Selasa, Rabu & Jum'at",
-          //   jadwal1_jam: "16.30 - 18.00",
+          //   gambar: "assets/dokter/user.png",
+          //   nama: "dr. Made Ayu, Sp. S",
+          //   jadwal1_hari: "Rabu",
+          //   jadwal1_jam: "10.30 - 12.00",
+          //   jadwal2_hari: "Jum'at",
+          //   jadwal2_jam: "09.00 - 11.00",
+          // ),
+          // ListDokter(
+          //   gambar: "assets/dokter/user.png",
+          //   nama: "dr. Ria Damaynti, Sp. S",
+          //   jadwal1_hari: "Selasa & Kamis",
+          //   jadwal1_jam: "14.00 - Selesai",
           //   jadwal2_hari: "Sabtu",
-          //   jadwal2_jam: "10.00 - Selesai",
+          //   jadwal2_jam: "08.00 - Selesai",
           // ),
         ],
       ),

@@ -86,39 +86,38 @@ class _LoginState extends State<Login> {
           ),
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: GNav(
-                  gap: 8,
-                  activeColor: Colors.white,
-                  iconSize: 24,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  duration: Duration(milliseconds: 800),
-                  tabBackgroundColor: Colors.grey[800],
-                  tabs: [
-                    GButton(
-                      icon: LineAwesomeIcons.home,
-                      text: 'Beranda',
-                    ),
-                    GButton(
-                      icon: LineAwesomeIcons.globe,
-                      text: 'Berita',
-                    ),
-                    GButton(
-                      icon: LineAwesomeIcons.phone,
-                      text: 'Kontak',
-                    ),
-                    GButton(
-                      icon: LineAwesomeIcons.key,
-                      text: 'Admin',
-                    ),
-                  ],
-                  selectedIndex: _selectedIndex,
-                  onTabChange: (index) {
-                    setState(() {
-                      _selectedIndex = index;
-                    });
-                  }),
-            ),
+                padding: const EdgeInsets.all(8),
+                child: GNav(
+                    gap: 8,
+                    activeColor: Colors.white,
+                    iconSize: 24,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    duration: Duration(milliseconds: 800),
+                    tabBackgroundColor: Colors.grey[800],
+                    tabs: [
+                      GButton(
+                        icon: LineAwesomeIcons.home,
+                        text: 'Beranda',
+                      ),
+                      GButton(
+                        icon: LineAwesomeIcons.globe,
+                        text: 'Berita',
+                      ),
+                      GButton(
+                        icon: LineAwesomeIcons.phone,
+                        text: 'Kontak',
+                      ),
+                      GButton(
+                        icon: LineAwesomeIcons.key,
+                        text: 'Admin',
+                      ),
+                    ],
+                    selectedIndex: _selectedIndex,
+                    onTabChange: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    })),
           ),
         ),
       ),

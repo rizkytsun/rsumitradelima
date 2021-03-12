@@ -4,42 +4,42 @@ import 'package:rsumitradelima/page/daftar_poli.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "jadwalRehab",
-    home: new JadwalRehab(),
+    title: "jadwalPatologi",
+    home: new JadwalPatologi(),
   ));
 }
 
-class JadwalRehab extends StatefulWidget {
+class JadwalPatologi extends StatefulWidget {
   @override
-  _JadwalRehabState createState() => _JadwalRehabState();
+  _JadwalPatologiState createState() => _JadwalPatologiState();
 }
 
-class _JadwalRehabState extends State<JadwalRehab> {
+class _JadwalPatologiState extends State<JadwalPatologi> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: new Text('Poliklinik Spesialis Rehab Medik'),
+        title: new Text('Poliklinik Spesialis Patologi Anatomi'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
       body: new ListView(
         children: <Widget>[
           ListDokter(
             gambar: "assets/dokter/user.png",
-            nama: "dr. Rahmad, Sp. KFR",
-            jadwal1_hari: "Senin - Sabtu",
-            jadwal1_jam: "08.00 - 18.00",
+            nama: "dr. M. Lukman Fadli, Sp. PA",
+            jadwal1_hari: "Selasa & Jumat",
+            jadwal1_jam: "15.00 - 17.00",
             jadwal2_hari: "",
             jadwal2_jam: "",
           ),
           // ListDokter(
-          //   gambar: "assets/dokter/widi.png",
-          //   nama: "dr. Widi Hatmaka, Sp. OG",
-          //   jadwal1_hari: "Selasa, Rabu & Jum'at",
-          //   jadwal1_jam: "16.30 - 18.00",
+          //   gambar: "assets/dokter/user.png",
+          //   nama: "dr. Garinda Alma Duta, Sp. P",
+          //   jadwal1_hari: "Selasa & Kamis",
+          //   jadwal1_jam: "16.00 - Selesai",
           //   jadwal2_hari: "Sabtu",
-          //   jadwal2_jam: "10.00 - Selesai",
+          //   jadwal2_jam: "10.00 - 13.00",
           // ),
         ],
       ),

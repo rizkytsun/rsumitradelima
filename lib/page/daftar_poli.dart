@@ -6,6 +6,15 @@ import 'package:rsumitradelima/page/jadwaldokter/jadwalKandungan.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalOrtho.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalRehab.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalSyaraf.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalMata.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalGigi.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalGigiSpesialis.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalParu.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalUrologi.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalTHT.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalJiwa.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalKulit.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalPatologi.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -89,7 +98,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalMata()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/mata.png',
@@ -98,7 +107,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalGigi()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/gigi.png',
@@ -107,7 +116,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalGigiSpesialis()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/gigi.png',
@@ -116,7 +125,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalParu()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/paru.png',
@@ -125,7 +134,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalUrologi()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/urologi.png',
@@ -134,7 +143,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalTHT()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/tht.png',
@@ -143,7 +152,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalJiwa()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/jiwa.png',
@@ -152,7 +161,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalKulit()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/kulit.png',
@@ -161,7 +170,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalKandungan()),
+                    MaterialPageRoute(builder: (_) => JadwalPatologi()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/patologi.png',

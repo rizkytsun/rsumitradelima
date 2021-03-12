@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
 import 'package:rsumitradelima/page/daftar_poli.dart';
 
-
 void main() {
   runApp(new MaterialApp(
-    title: "jadwalKandungan",
+    title: "jadwalAnak",
     home: new JadwalAnak(),
   ));
 }
@@ -32,13 +31,13 @@ class _JadwalAnakState extends State<JadwalAnak> {
             jadwal1_hari: "Selasa, Kamis & Jum'at",
             jadwal1_jam: "15.00 - 17.00",
             jadwal2_hari: "Sabtu",
-            jadwal2_jam: "12.00 - Selesai",
+            jadwal2_jam: "13.00 - 15.00",
           ),
           ListDokter(
             gambar: "assets/dokter/dewi.png",
-            nama: "dr. Dewi, Sp.OG",
-            jadwal1_hari: "Senin & Kamis",
-            jadwal1_jam: "10.00 - Selesai",
+            nama: "dr. Dewi Nurindah, Sp.A",
+            jadwal1_hari: "Senin",
+            jadwal1_jam: "13.30 - Selesai",
             jadwal2_hari: "Sabtu",
             jadwal2_jam: "12.00 - Selesai",
           ),
@@ -83,14 +82,14 @@ class ListDokter extends StatelessWidget {
             ]),
         child: ListTile(
           leading: CircleAvatar(
-            // backgroundColor: Colors.transparent,
-            backgroundImage: AssetImage(gambar)
-          ),
-          title: Flexible(
-            child: Text(
-              nama,
-              style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold,color: Colors.black),
-            ),
+              // backgroundColor: Colors.transparent,
+              backgroundImage: AssetImage(gambar)),
+          title: Text(
+            nama,
+            style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 10.0),
@@ -105,8 +104,7 @@ class ListDokter extends StatelessWidget {
                     Flexible(
                       child: Text(
                         jadwal1_hari,
-                        style:
-                            TextStyle(fontSize: 14.0, color: Colors.grey),
+                        style: TextStyle(fontSize: 14.0, color: Colors.grey),
                       ),
                     ),
                     // Expanded(),

@@ -4,43 +4,59 @@ import 'package:rsumitradelima/page/daftar_poli.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "jadwalRehab",
-    home: new JadwalRehab(),
+    title: "jadwalGigi",
+    home: new JadwalGigi(),
   ));
 }
 
-class JadwalRehab extends StatefulWidget {
+class JadwalGigi extends StatefulWidget {
   @override
-  _JadwalRehabState createState() => _JadwalRehabState();
+  _JadwalGigiState createState() => _JadwalGigiState();
 }
 
-class _JadwalRehabState extends State<JadwalRehab> {
+class _JadwalGigiState extends State<JadwalGigi> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: new Text('Poliklinik Spesialis Rehab Medik'),
+        title: new Text('Poliklinik Gigi'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
       body: new ListView(
         children: <Widget>[
+          // ListDokter(
+          //   gambar: "assets/dokter/user.png",
+          //   nama: "drg. Lukman Hakim H., Sp. PM",
+          //   jadwal1_hari: "Senin, Rabu & Jum'at",
+          //   jadwal1_jam: "15.00 - 18.00",
+          //   jadwal2_hari: "",
+          //   jadwal2_jam: "",
+          // ),
+          // ListDokter(
+          //   gambar: "assets/dokter/user.png",
+          //   nama: "drg. Vivi Ariefianty, Sp. KGA",
+          //   jadwal1_hari: "Selasa, Rabu & Kamis",
+          //   jadwal1_jam: "08.00 - 10.00",
+          //   jadwal2_hari: "",
+          //   jadwal2_jam: "",
+          // ),
           ListDokter(
             gambar: "assets/dokter/user.png",
-            nama: "dr. Rahmad, Sp. KFR",
-            jadwal1_hari: "Senin - Sabtu",
-            jadwal1_jam: "08.00 - 18.00",
+            nama: "drg. Ahmad Nadian Permana",
+            jadwal1_hari: "Senin, Jum'at & Sabtu",
+            jadwal1_jam: "09.00 - 14.00",
             jadwal2_hari: "",
             jadwal2_jam: "",
           ),
-          // ListDokter(
-          //   gambar: "assets/dokter/widi.png",
-          //   nama: "dr. Widi Hatmaka, Sp. OG",
-          //   jadwal1_hari: "Selasa, Rabu & Jum'at",
-          //   jadwal1_jam: "16.30 - 18.00",
-          //   jadwal2_hari: "Sabtu",
-          //   jadwal2_jam: "10.00 - Selesai",
-          // ),
+          ListDokter(
+            gambar: "assets/dokter/user.png",
+            nama: "drg. Tyazani Sholichah",
+            jadwal1_hari: "Selasa, Rabu & Kamis",
+            jadwal1_jam: "10.00 - 13.00",
+            jadwal2_hari: "",
+            jadwal2_jam: "",
+          ),
         ],
       ),
     );
