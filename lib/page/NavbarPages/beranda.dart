@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/page/daftar_poli.dart';
+import 'package:rsumitradelima/page/kuisioner.dart';
 import 'package:rsumitradelima/page/tempat_tidur.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -221,6 +222,7 @@ class _BerandaPageState extends State<BerandaPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       ButtonKotakHome(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => KuisionerPasien()),),
                         assetKeSvg: 'assets/home/rating.svg',
                         text: 'Kuisioner',
                       ),
