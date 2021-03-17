@@ -25,7 +25,7 @@ class _BerandaPageState extends State<BerandaPage> {
   );
 
   _launchWebApp() async {
-    const url = 'http://rsumitradelima.com:8080/webapps/epasien';
+    const url = 'https://wa.me/6281217442444?text=DAFTARPOLI';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -195,16 +195,26 @@ class _BerandaPageState extends State<BerandaPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     ButtonKotakHome(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => _launchWebApp()),
+                      ),
                       assetKeSvg: 'assets/home/pendaftaran.svg',
                       text: 'Pendaftaran Online',
                     ),
                     ButtonKotakHome(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DaftarPoliklinik()),),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => DaftarPoliklinik()),
+                      ),
                       assetKeSvg: 'assets/home/jadwal-dokter.svg',
                       text: 'Daftar Poliklinik',
                     ),
                     ButtonKotakHome(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TempatTidur()),),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => TempatTidur()),
+                      ),
                       assetKeSvg: 'assets/home/tempat-tidur.svg',
                       text: 'Tempat Tidur',
                     ),
@@ -222,7 +232,10 @@ class _BerandaPageState extends State<BerandaPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       ButtonKotakHome(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => KuisionerPasien()),),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => KuisionerPasien()),
+                        ),
                         assetKeSvg: 'assets/home/rating.svg',
                         text: 'Kuisioner',
                       ),
@@ -235,7 +248,7 @@ class _BerandaPageState extends State<BerandaPage> {
                         text: 'Rate Kepuasan',
                       ),
                       ButtonKotakHome(
-                        onTap: (){},
+                        onTap: () {},
                         assetKeSvg: 'assets/home/library.svg',
                         text: 'Elektronik Jurnal',
                       ),
@@ -283,7 +296,7 @@ class ButtonKotakHome extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
-                  child: SvgPicture.asset(
+                    child: SvgPicture.asset(
                   assetKeSvg,
                   width: (MediaQuery.of(context).size.width / 4) - 10.0 - 30.0,
                 )),
