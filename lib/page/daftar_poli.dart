@@ -34,7 +34,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: new Text('Daftar Poliklinik'),
+        title: new Text('DAFTAR POLIKLINIK'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
       body: new ListView(

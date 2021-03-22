@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rsumitradelima/main.dart';
 import 'package:rsumitradelima/page/daftar_poli.dart';
+import 'package:rsumitradelima/page/webView/halamanKuisioner.dart';
+import 'package:rsumitradelima/page/webView/halamanURL.dart';
 import 'package:rsumitradelima/page/kuisioner.dart';
 import 'package:rsumitradelima/page/tempat_tidur.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -88,15 +91,15 @@ class _BerandaPageState extends State<BerandaPage> {
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // Image.asset(
-                  //   'assets/rsmd_logo.png',
-                  //   width: (MediaQuery.of(context).size.width / 5) - 35.0,
-                  // ),
-                  Text(
-                    " RSU MITRA DELIMA",
-                    style:
-                        TextStyle(fontSize: 30, fontFamily: 'BauhausReguler'),
-                  )
+                  Image.asset(
+                    'assets/header.png',
+                    width: (MediaQuery.of(context).size.width / 1) - 10.0,
+                  ),
+                  // Text(
+                  //   " RSU MITRA DELIMA",
+                  //   style:
+                  //       TextStyle(fontSize: 30, fontFamily: 'BauhausReguler'),
+                  // )
                 ],
               )),
             ),
@@ -196,9 +199,11 @@ class _BerandaPageState extends State<BerandaPage> {
                   children: <Widget>[
                     ButtonKotakHome(
                       onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => _launchWebApp()),
-                      ),
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => HalamanUtama(
+                                  selectedUrl:
+                                      "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
                       assetKeSvg: 'assets/home/pendaftaran.svg',
                       text: 'Pendaftaran Online',
                     ),
@@ -233,11 +238,13 @@ class _BerandaPageState extends State<BerandaPage> {
                     children: <Widget>[
                       ButtonKotakHome(
                         onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => KuisionerPasien()),
-                        ),
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => HalamanKuisioner(
+                                    selectedUrl:
+                                        "https://docs.google.com/forms/d/e/1FAIpQLSfzGqp_Ji1faeTCuGeMIb8C95CbREFQrau1J7pvCG3tJlS7NQ/viewform?usp=sf_link"))),
                         assetKeSvg: 'assets/home/rating.svg',
-                        text: 'Kuisioner',
+                        text: 'Kuisioner Pasien',
                       ),
                       ButtonKotakHome(
                         assetKeSvg: 'assets/home/email.svg',

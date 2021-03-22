@@ -50,59 +50,26 @@ class _TempatTidurState extends State<TempatTidur> {
     },
   ];
 
-  get http => null;
-
-  Future<Album> fetchAlbum() async {
-      final response = await http.get(
-        'https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/bed/read/0187R010/1/100',
-        headers: {HttpHeaders.authorizationHeader: "Nhtin37dTtfgoYcoZLXIgQ1OySVk55USRW/C06azVV0="},
-      );
-      final responseJson = jsonDecode(response.body);
-    
-      return Album.fromJson(responseJson);
-        }
-        
-        class Album {
-          final int userId;
-          final int id;
-          final String title;
-        
-          Album({this.userId, this.id, this.title});
-        
-          factory Album.fromJson(Map<String, dynamic> json) {
-            return Album(
-              userId: json['userId'],
-              id: json['id'],
-              title: json['title'],
-            );
-          }
-        }
-        
-        
-          @override
-          Widget build(BuildContext context) {
-            return Scaffold(
-                appBar: AppBar(
-                  backgroundColor: MyConstants().colorJadwalDR,
-                  title: Text('Tempat Tidur'),
-                ),
-                backgroundColor: MyConstants().colorJadwalDR,
-                body: ListView.builder(
-                  padding: EdgeInsets.all(10),
-                  itemCount: listKelasTempatTidur.length,
-                  itemBuilder: (context, i) => ListTempatTidur(
-                    kelas: listKelasTempatTidur[i]["kelas"],
-                    tersedia: listKelasTempatTidur[i]["tersedia"],
-                    total_tt: listKelasTempatTidur[i]["total_tt"],
-                    update: listKelasTempatTidur[i]["update"],
-                  ),
-                ));
-          }
-        }
-  
-  mixin Album {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: MyConstants().colorJadwalDR,
+          title: Text('DAFTAR TEMPAT TIDUR'),
+        ),
+        backgroundColor: MyConstants().colorJadwalDR,
+        body: ListView.builder(
+          padding: EdgeInsets.all(10),
+          itemCount: listKelasTempatTidur.length,
+          itemBuilder: (context, i) => ListTempatTidur(
+            kelas: listKelasTempatTidur[i]["kelas"],
+            tersedia: listKelasTempatTidur[i]["tersedia"],
+            total_tt: listKelasTempatTidur[i]["total_tt"],
+            update: listKelasTempatTidur[i]["update"],
+          ),
+        ));
+  }
 }
-
 
 class ListTempatTidur extends StatelessWidget {
   ListTempatTidur({this.kelas, this.tersedia, this.total_tt, this.update});
