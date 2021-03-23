@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
@@ -11,44 +12,28 @@ class TempatTidur extends StatefulWidget {
 }
 
 class _TempatTidurState extends State<TempatTidur> {
-  var listKelasTempatTidur = [
-    {
-      "kelas": "VIP",
-      "tersedia": "5",
-      "total_tt": "10",
-      "update": "12-03-2021 12:50",
-    },
-    {
-      "kelas": "KELAS 1",
-      "tersedia": "2",
-      "total_tt": "10",
-      "update": "12-03-2021 12:50",
-    },
-    {
-      "kelas": "KELAS 2",
-      "tersedia": "10",
-      "total_tt": "10",
-      "update": "12-03-2021 12:50",
-    },
-    {
-      "kelas": "KELAS 3",
-      "tersedia": "4",
-      "total_tt": "10",
-      "update": "12-03-2021 12:50",
-    },
-    {
-      "kelas": "RUANG BERSALIN",
-      "tersedia": "5",
-      "total_tt": "10",
-      "update": "12-03-2021 12:50",
-    },
-    {
-      "kelas": "RUANG ISOLASI",
-      "tersedia": "5",
-      "total_tt": "10",
-      "update": "12-03-2021 12:50",
-    },
-  ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    getData();
+  }
+
+  var listKelasTempatTidur;
+  bool isLoading = true;
+
+  getData() async {
+    var list = await http.get(Uri.encodeFull('https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/bed/read/0187R010/1/100'), headers: {
+      'X-cons-id':'18716' ,
+      'X-timestamp':'1616477238' ,
+      'X-signature':'CYgUJ2Z7DE1/vVydKu9fpv8KqSUvSL4FsKD8iNRqQiA=' ,
+    });
+
+    setState(() {
+      listKelasTempatTidur = list;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +43,7 @@ class _TempatTidurState extends State<TempatTidur> {
           title: Text('DAFTAR TEMPAT TIDUR'),
         ),
         backgroundColor: MyConstants().colorJadwalDR,
-        body: ListView.builder(
+        body: isLoading ? Center(child: CircularProgressIndicator()) : ListView.builder(
           padding: EdgeInsets.all(10),
           itemCount: listKelasTempatTidur.length,
           itemBuilder: (context, i) => ListTempatTidur(
