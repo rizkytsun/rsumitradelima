@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/main.dart';
 import 'package:rsumitradelima/page/daftar_poli.dart';
+import 'package:rsumitradelima/page/webView/halamanJurnal.dart';
+import 'package:rsumitradelima/page/webView/halamanKritik.dart';
 import 'package:rsumitradelima/page/webView/halamanKuisioner.dart';
-import 'package:rsumitradelima/page/webView/halamanURL.dart';
+import 'package:rsumitradelima/page/webView/halamanPendaftaran.dart';
 import 'package:rsumitradelima/page/kuisioner.dart';
 import 'package:rsumitradelima/page/tempat_tidur.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rsumitradelima/components.dart';
+
+import '../menuDaftarOnline.dart';
 
 class BerandaPage extends StatefulWidget {
   @override
@@ -201,9 +205,10 @@ class _BerandaPageState extends State<BerandaPage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => HalamanUtama(
-                                  selectedUrl:
-                                      "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
+                              builder: (_) => ListMenuDaftarOnline())),
+                      // builder: (_) => HalamanUtama(
+                      //     selectedUrl:
+                      //         "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
                       assetKeSvg: 'assets/home/pendaftaran.svg',
                       text: 'Pendaftaran Online',
                     ),
@@ -244,18 +249,30 @@ class _BerandaPageState extends State<BerandaPage> {
                                     selectedUrl:
                                         "https://docs.google.com/forms/d/e/1FAIpQLSfzGqp_Ji1faeTCuGeMIb8C95CbREFQrau1J7pvCG3tJlS7NQ/viewform?usp=sf_link"))),
                         assetKeSvg: 'assets/home/rating.svg',
-                        text: 'Kuisioner Pasien',
+                        text: 'Kuisioner Rawat Inap',
                       ),
                       ButtonKotakHome(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => HalamanKritik(
+                                    selectedUrl:
+                                        "https://docs.google.com/forms/d/e/1FAIpQLScbi1HxOjwlLmYIu4kLhQ0qQj_PTtkJh0vxvEEnctV27mMg8A/viewform?usp=sf_link"))),
                         assetKeSvg: 'assets/home/email.svg',
-                        text: 'layanan Pengaduan',
+                        text: 'Kritik dan Saran',
                       ),
                       ButtonKotakHome(
+                        onTap: () => _launchMaps(),
                         assetKeSvg: 'assets/home/rate.svg',
                         text: 'Rate Kepuasan',
                       ),
                       ButtonKotakHome(
-                        onTap: () {},
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => HalamanJurnal(
+                                    selectedUrl:
+                                        "http://www.rsumitradelima.com/#cbp=http://www.rsumitradelima.com/index.php/Tampil/tampebook"))),
                         assetKeSvg: 'assets/home/library.svg',
                         text: 'Elektronik Jurnal',
                       ),

@@ -4,13 +4,13 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../components.dart';
 
-class HalamanKuisioner extends StatelessWidget {
+class HalamanJurnal extends StatelessWidget {
   final String selectedUrl;
 
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
 
-  HalamanKuisioner({
+  HalamanJurnal({
     @required this.selectedUrl,
   });
 
@@ -19,7 +19,7 @@ class HalamanKuisioner extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: Text("KUISIONER RAWAT INAP"),
+        title: Text("ELEKTRONIK JURNAL"),
       ),
       body: WebView(
         initialUrl: selectedUrl,

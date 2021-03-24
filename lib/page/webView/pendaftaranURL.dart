@@ -1,4 +1,4 @@
-import 'package:rsumitradelima/page/webView/halamanURL.dart';
+import 'package:rsumitradelima/page/webView/halamanPendaftaran.dart';
 import 'package:flutter/material.dart';
 
 void main() {

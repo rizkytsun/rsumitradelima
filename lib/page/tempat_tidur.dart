@@ -12,7 +12,6 @@ class TempatTidur extends StatefulWidget {
 }
 
 class _TempatTidurState extends State<TempatTidur> {
-
   @override
   void initState() {
     super.initState();
@@ -24,14 +23,17 @@ class _TempatTidurState extends State<TempatTidur> {
   bool isLoading = true;
 
   getData() async {
-    var list = await http.get(Uri.encodeFull('https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/bed/read/0187R010/1/100'), headers: {
-      'X-cons-id':'18716' ,
-      'X-timestamp':'1616477238' ,
-      'X-signature':'CYgUJ2Z7DE1/vVydKu9fpv8KqSUvSL4FsKD8iNRqQiA=' ,
-    });
+    var list = await http.get(
+        Uri.encodeFull(
+            'https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/bed/read/0187R010/1/100'),
+        headers: {
+          'X-cons-id': '18716',
+          'X-timestamp': '1616550497',
+          'X-signature': 'D3Ar7bLVrPZdIIoHp/xXOfHS9r5PzaMKbfOttHqZBSs=',
+        });
 
     setState(() {
-      listKelasTempatTidur = list;
+      listKelasTempatTidur = (json.decode(list.body)["response"])["list"];
     });
   }
 
@@ -43,26 +45,29 @@ class _TempatTidurState extends State<TempatTidur> {
           title: Text('DAFTAR TEMPAT TIDUR'),
         ),
         backgroundColor: MyConstants().colorJadwalDR,
-        body: isLoading ? Center(child: CircularProgressIndicator()) : ListView.builder(
-          padding: EdgeInsets.all(10),
-          itemCount: listKelasTempatTidur.length,
-          itemBuilder: (context, i) => ListTempatTidur(
-            kelas: listKelasTempatTidur[i]["kelas"],
-            tersedia: listKelasTempatTidur[i]["tersedia"],
-            total_tt: listKelasTempatTidur[i]["total_tt"],
-            update: listKelasTempatTidur[i]["update"],
-          ),
-        ));
+        body: isLoading
+            ? Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                padding: EdgeInsets.all(10),
+                itemCount: listKelasTempatTidur.length,
+                itemBuilder: (context, i) => ListTempatTidur(
+                  namakelas: listKelasTempatTidur[i]["kelas"],
+                  tersedia: listKelasTempatTidur[i]["tersedia"],
+                  kapasitas: listKelasTempatTidur[i]["total_tt"],
+                  lastupdate: listKelasTempatTidur[i]["update"],
+                ),
+              ));
   }
 }
 
 class ListTempatTidur extends StatelessWidget {
-  ListTempatTidur({this.kelas, this.tersedia, this.total_tt, this.update});
+  ListTempatTidur(
+      {this.namakelas, this.tersedia, this.kapasitas, this.lastupdate});
 
-  final String kelas;
+  final String namakelas;
   final String tersedia;
-  final String total_tt;
-  final String update;
+  final String kapasitas;
+  final String lastupdate;
 
   @override
   Widget build(BuildContext context) {
@@ -94,12 +99,18 @@ class ListTempatTidur extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(kelas,
+                    // Text(ListTempatTidur[0]['namakelas'],
+                    Text(namakelas,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 13.0)),
+                    // Text(kelas,
+                    //     textAlign: TextAlign.center,
+                    //     style: TextStyle(
+                    //         fontWeight: FontWeight.bold, fontSize: 13.0)),
                     Text(
                       tersedia,
+                      // ListTempatTidur[0]['tersedia'],
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
@@ -113,19 +124,30 @@ class ListTempatTidur extends StatelessWidget {
                   Icon(Icons.check),
                   Text("Total tempat tidur"),
                   Expanded(child: Container()),
-                  Text(total_tt),
+                  Text(
+                    kapasitas,
+                    // ListTempatTidur[0]['kapasitas'],
+                  )
                 ]),
                 Row(children: <Widget>[
                   Icon(Icons.hotel),
                   Text("Tempat Tidur Tersedia"),
                   Expanded(child: Container()),
-                  Text(tersedia),
+                  Text(
+                    tersedia,
+                    // ListTempatTidur[0]['tersedia'],
+                  )
                 ]),
                 Row(children: <Widget>[
                   Icon(Icons.update),
                   Text("Terakhir Update"),
                   Expanded(child: Container()),
-                  Flexible(child: Text(update)),
+                  Flexible(
+                    child: Text(
+                      lastupdate,
+                      // ListTempatTidur[0]['lastupdate'],
+                    ),
+                  )
                 ]),
               ]),
             ))
