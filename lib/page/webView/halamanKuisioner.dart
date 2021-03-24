@@ -4,15 +4,26 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../components.dart';
 
-class HalamanKuisioner extends StatelessWidget {
+class HalamanKuisioner extends StatefulWidget {
   final String selectedUrl;
+  
 
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
 
   HalamanKuisioner({
     @required this.selectedUrl,
   });
+
+  @override
+  _HalamanKuisionerState createState() => _HalamanKuisionerState();
+}
+
+class _HalamanKuisionerState extends State<HalamanKuisioner> {
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+
+  bool isLoading = true;
+
+  final _key = UniqueKey();
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +32,21 @@ class HalamanKuisioner extends StatelessWidget {
         backgroundColor: MyConstants().colorJadwalDR,
         title: Text("KUISIONER RAWAT INAP"),
       ),
-      body: WebView(
-        initialUrl: selectedUrl,
-        javascriptMode: JavascriptMode.unrestricted,
-        onWebViewCreated: (WebViewController webViewController) {
-          _controller.complete(webViewController);
-        },
+
+      body: Stack(
+        children: <Widget>[
+          WebView(
+            key: _key,
+            initialUrl: widget.selectedUrl,
+            javascriptMode: JavascriptMode.unrestricted,
+            onPageFinished: (finish) {
+              setState(() {
+                isLoading = false;
+              });
+            },
+          ),
+          isLoading ? Center(child: CircularProgressIndicator(backgroundColor: Colors.redAccent, valueColor: AlwaysStoppedAnimation(Colors.green),)) : Stack(),
+        ],
       ),
     );
   }

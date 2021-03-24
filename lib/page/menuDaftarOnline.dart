@@ -38,11 +38,11 @@ class _ListMenuDaftarOnlineState extends State<ListMenuDaftarOnline> {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => HalamanUtama(
+                            builder: (_) => HalamanPendaftaran(
                                 selectedUrl:
                                     "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
                     assetKeSvg: 'assets/home/www.svg',
-                    text: 'DAFTAR VIA WEBSITE',
+                    text: 'DAFTAR VIA APLIKASI',
                   ),
                   SizedBox(
                     height: 20,

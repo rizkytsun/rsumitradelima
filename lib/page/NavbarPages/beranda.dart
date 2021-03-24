@@ -226,7 +226,7 @@ class _BerandaPageState extends State<BerandaPage> {
                         MaterialPageRoute(builder: (_) => TempatTidur()),
                       ),
                       assetKeSvg: 'assets/home/tempat-tidur.svg',
-                      text: 'Tempat Tidur',
+                      text: 'Ketersediaan Kamar',
                     ),
                     ButtonKotakHome(
                       assetKeSvg: 'assets/home/antrian.svg',

@@ -42,11 +42,11 @@ class _TempatTidurState extends State<TempatTidur> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: MyConstants().colorJadwalDR,
-          title: Text('DAFTAR TEMPAT TIDUR'),
+          title: Text('KETERSEDIAAN KAMAR'),
         ),
         backgroundColor: MyConstants().colorJadwalDR,
         body: isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? Center(child: CircularProgressIndicator(backgroundColor: Colors.redAccent, valueColor: AlwaysStoppedAnimation(Colors.green),))
             : ListView.builder(
                 padding: EdgeInsets.all(10),
                 itemCount: listKelasTempatTidur.length,

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'MY App',
-        home: HalamanUtama(
+        home: HalamanPendaftaran(
           selectedUrl:
               "http://rsumitradelima.com:8080/webapps/epasien/login.php",
         ));
