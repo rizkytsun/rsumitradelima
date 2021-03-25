@@ -22,18 +22,55 @@ class _TempatTidurState extends State<TempatTidur> {
   var listKelasTempatTidur;
   bool isLoading = true;
 
+  String timestamp;
+  String signature;
+
+  /* 
+  
+  {"x-cons-id" : "12986","timestamp" : "128361912837","signature" : "asd8q7wd8q7dg87",}
+  
+  */
+
+  getAPIaccess() async {
+    var response = await http.get(
+      Uri.encodeFull(
+        'https://rsumitradelima.com/someting.php'),
+      headers: {'accept':'application/json'}, 
+    );
+
+    if(response.statusCode == 200 || response.statusCode == 404) {
+      var data = json.decode(response.body);
+      timestamp = data["timestamp"];
+      signature = data["signature"];
+
+      getData();
+    } else {
+      return {
+        'result' : false,
+        'data' : 'Terjadi kesalahan | -> getData <-',
+      };
+    }
+  }
+
   getData() async {
     var list = await http.get(
         Uri.encodeFull(
             'https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/bed/read/0187R010/1/100'),
         headers: {
           'X-cons-id': '18716',
-          'X-timestamp': '1616550497',
-          'X-signature': 'D3Ar7bLVrPZdIIoHp/xXOfHS9r5PzaMKbfOttHqZBSs=',
+          'X-timestamp': timestamp,
+          'X-signature': signature,
         });
 
+    var responseBody;
+    var data;
+
     setState(() {
-      listKelasTempatTidur = (json.decode(list.body)["response"])["list"];
+      responseBody = json.decode(list.body);
+      data = responseBody["response"];
+      listKelasTempatTidur = data["list"];
+
+      isLoading = false;
     });
   }
 
