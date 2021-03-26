@@ -12,7 +12,6 @@ class TempatTidur extends StatefulWidget {
 }
 
 class _TempatTidurState extends State<TempatTidur> {
-
   @override
   void initState() {
     super.initState();
@@ -32,14 +31,18 @@ class _TempatTidurState extends State<TempatTidur> {
   
   */
 
-  getAPIaccess() async {
-    var response = await http.get(
-      Uri.encodeFull(
-        'http://localhost/api/signature.php'),
-      headers: {'accept':'application/json'}, 
-    );
+  Future getAPIaccess() async {
+    final String url = 'http://localhost/signatur_bpjs/signature.php';
+    var response = await http
+        .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
+    // final response =
+    //     await http.get('http://localhost/signatur_bpjs/signature.php');
+    // var response = await http.get(
+    //   Uri.encodeFull('http://localhost/signatur_bpjs/signature.php'),
+    //   headers: {'accept': 'application/json'},
+    // );
 
-    if(response.statusCode == 200 || response.statusCode == 404) {
+    if (response.statusCode == 200 || response.statusCode == 404) {
       var data = json.decode(response.body);
       timestamp = data["X-timestamp"];
       signature = data["X-signature"];
@@ -47,10 +50,11 @@ class _TempatTidurState extends State<TempatTidur> {
       getData();
     } else {
       return {
-        'result' : false,
-        'data' : 'Terjadi kesalahan | -> getData <-',
+        'result': false,
+        'data': 'Terjadi kesalahan | -> getData <-',
       };
     }
+    // print(signature);
   }
 
   getData() async {
@@ -59,8 +63,10 @@ class _TempatTidurState extends State<TempatTidur> {
             'https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/bed/read/0187R010/1/100'),
         headers: {
           'X-cons-id': '18716',
-          'X-timestamp': '1616673425',
-          'X-signature': 'AvW7U3mNv1MYNk5xve7kjH08i58aDK1aLZOemGYOe+E=',
+          'X-timestamp': timestamp,
+          'X-signature': signature,
+          // 'X-timestamp': '1616746343',
+          // 'X-signature': 'oT4hH\/amP2QZ7OGsn\/HoC4g6fNMFVqkgKh5nbKilcxE=',
         });
 
     var responseBody;
@@ -71,7 +77,6 @@ class _TempatTidurState extends State<TempatTidur> {
       // print(responseBody);
       data = responseBody["response"];
       listKelasTempatTidur = data["list"];
-      
 
       isLoading = false;
     });
@@ -86,7 +91,11 @@ class _TempatTidurState extends State<TempatTidur> {
         ),
         backgroundColor: MyConstants().colorJadwalDR,
         body: isLoading
-            ? Center(child: CircularProgressIndicator(backgroundColor: Colors.redAccent, valueColor: AlwaysStoppedAnimation(Colors.green),))
+            ? Center(
+                child: CircularProgressIndicator(
+                backgroundColor: Colors.redAccent,
+                valueColor: AlwaysStoppedAnimation(Colors.green),
+              ))
             : ListView.builder(
                 padding: EdgeInsets.all(10),
                 itemCount: listKelasTempatTidur.length,
@@ -106,7 +115,7 @@ class ListTempatTidur extends StatelessWidget {
 
   final String namakelas;
   final int tersedia;
-  final String kapasitas;
+  final int kapasitas;
   final String lastupdate;
 
   @override
@@ -139,8 +148,8 @@ class ListTempatTidur extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(ListTempatTidur[0]['namakelas'],
-                    // Text(namakelas,
+                    // Text(ListTempatTidur[0]['namakelas'],
+                    Text(namakelas,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 13.0)),
@@ -149,7 +158,7 @@ class ListTempatTidur extends StatelessWidget {
                     //     style: TextStyle(
                     //         fontWeight: FontWeight.bold, fontSize: 13.0)),
                     Text(
-                      "tersedia",
+                      tersedia.toString(),
                       // ListTempatTidur[0]['tersedia'],
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -165,7 +174,7 @@ class ListTempatTidur extends StatelessWidget {
                   Text("Total tempat tidur"),
                   Expanded(child: Container()),
                   Text(
-                    kapasitas,
+                    kapasitas.toString(),
                     // ListTempatTidur[0]['kapasitas'],
                   )
                 ]),
@@ -174,7 +183,7 @@ class ListTempatTidur extends StatelessWidget {
                   Text("Tempat Tidur Tersedia"),
                   Expanded(child: Container()),
                   Text(
-                    "tersedia",
+                    tersedia.toString(),
                     // ListTempatTidur[0]['tersedia'],
                   )
                 ]),
