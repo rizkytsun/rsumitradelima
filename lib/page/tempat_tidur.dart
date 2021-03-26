@@ -16,7 +16,9 @@ class _TempatTidurState extends State<TempatTidur> {
   void initState() {
     super.initState();
 
-    getData();
+    getAPIaccess();
+    // getData();
+    
   }
 
   var listKelasTempatTidur;
@@ -32,15 +34,19 @@ class _TempatTidurState extends State<TempatTidur> {
   */
 
   Future getAPIaccess() async {
-    final String url = 'http://localhost/signatur_bpjs/signature.php';
+    final String url = 'http://192.168.15.8/API/signature.php';
     var response = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
+        // print("response"+response.toString());
+        
     // final response =
     //     await http.get('http://localhost/signatur_bpjs/signature.php');
     // var response = await http.get(
     //   Uri.encodeFull('http://localhost/signatur_bpjs/signature.php'),
     //   headers: {'accept': 'application/json'},
     // );
+
+
 
     if (response.statusCode == 200 || response.statusCode == 404) {
       var data = json.decode(response.body);
@@ -55,7 +61,10 @@ class _TempatTidurState extends State<TempatTidur> {
       };
     }
     // print(signature);
+    
   }
+
+  
 
   getData() async {
     var list = await http.get(
@@ -65,8 +74,8 @@ class _TempatTidurState extends State<TempatTidur> {
           'X-cons-id': '18716',
           'X-timestamp': timestamp,
           'X-signature': signature,
-          // 'X-timestamp': '1616746343',
-          // 'X-signature': 'oT4hH\/amP2QZ7OGsn\/HoC4g6fNMFVqkgKh5nbKilcxE=',
+          // 'X-timestamp': '1616766605',
+          // 'X-signature': 'cgUpk9g6bO0Ua7fTMQGftM2gP4pyF75EVGmBg9AEU3U=',
         });
 
     var responseBody;
@@ -193,7 +202,7 @@ class ListTempatTidur extends StatelessWidget {
                   Expanded(child: Container()),
                   Flexible(
                     child: Text(
-                      lastupdate,
+                      lastupdate, style: TextStyle(fontSize: 10),
                       // ListTempatTidur[0]['lastupdate'],
                     ),
                   )
