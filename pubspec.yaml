@@ -96,7 +96,13 @@ flutter:
     - assets/dokter/widi.png
     - assets/dokter/widi.png
     - assets/dokter/widi.png
-    - assets/dokter/widi.png
+    - assets/kontak/map.png
+    - assets/kontak/pin.png
+    - assets/kontak/information.png
+    - assets/kontak/call.png
+    - assets/kontak/ambulance.png
+    - assets/kontak/email.png
+    - assets/kontak/email2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

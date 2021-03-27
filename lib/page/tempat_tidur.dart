@@ -27,14 +27,8 @@ class _TempatTidurState extends State<TempatTidur> {
   String timestamp;
   String signature;
 
-  /* 
-  
-  {"x-cons-id" : "12986","timestamp" : "128361912837","signature" : "asd8q7wd8q7dg87",}
-  
-  */
-
   Future getAPIaccess() async {
-    final String url = 'http://192.168.15.8/API/signature.php';
+    final String url = 'http://rsumitradelima.com/signature.php';
     var response = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
         // print("response"+response.toString());
@@ -113,6 +107,7 @@ class _TempatTidurState extends State<TempatTidur> {
                   tersedia: listKelasTempatTidur[i]["tersedia"],
                   kapasitas: listKelasTempatTidur[i]["kapasitas"],
                   lastupdate: listKelasTempatTidur[i]["lastupdate"],
+                  namaruang: listKelasTempatTidur[i]["namaruang"],
                 ),
               ));
   }
@@ -120,12 +115,13 @@ class _TempatTidurState extends State<TempatTidur> {
 
 class ListTempatTidur extends StatelessWidget {
   ListTempatTidur(
-      {this.namakelas, this.tersedia, this.kapasitas, this.lastupdate});
+      {this.namakelas, this.tersedia, this.kapasitas, this.lastupdate, this.namaruang});
 
   final String namakelas;
   final int tersedia;
   final int kapasitas;
   final String lastupdate;
+  final String namaruang;
 
   @override
   Widget build(BuildContext context) {
@@ -167,10 +163,10 @@ class ListTempatTidur extends StatelessWidget {
                     //     style: TextStyle(
                     //         fontWeight: FontWeight.bold, fontSize: 13.0)),
                     Text(
-                      tersedia.toString(),
+                      namaruang.toString(),
                       // ListTempatTidur[0]['tersedia'],
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                          TextStyle(fontSize: 10), textAlign: TextAlign.center,
                     ),
                   ],
                 )),

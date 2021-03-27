@@ -5,6 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:rsumitradelima/page/NavbarPages/admin.dart';
 import 'package:rsumitradelima/page/NavbarPages/beranda.dart';
 import 'package:rsumitradelima/page/NavbarPages/berita.dart';
+import 'package:rsumitradelima/page/NavbarPages/kontak.dart';
 
 void main() => runApp(MyApp());
 
@@ -60,9 +61,7 @@ class _LoginState extends State<Login> {
       case 1:
         return BeritaPage();
       case 2:
-        return Center(
-          child: Text('Hello World'),
-        );
+        return KontakPage();
       case 3:
         return AdminPage();
         break;
@@ -100,6 +99,7 @@ class _LoginState extends State<Login> {
                         text: 'Beranda',
                       ),
                       GButton(
+                      
                         icon: LineAwesomeIcons.globe,
                         text: 'Berita',
                       ),
