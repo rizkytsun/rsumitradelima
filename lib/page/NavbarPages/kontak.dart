@@ -20,7 +20,8 @@ class _KontakPageState extends State<KontakPage> {
           ListKontak(
             iconkiri: "assets/kontak/map.png",
             text: "Alamat",
-            subtitle: "Jl. Raya Bulupayung No.1B, Bulupayung, Krebet, Kec. Bululawang, Malang, Jawa Timur 65171",
+            subtitle:
+                "Jl. Raya Bulupayung No.1B, Bulupayung, Krebet, Kec. Bululawang, Malang, Jawa Timur 65171",
             iconkanan: "assets/kontak/pin.png",
           ),
           ListKontak(
@@ -43,12 +44,11 @@ class _KontakPageState extends State<KontakPage> {
           ),
         ],
       ),
-    );     
+    );
   }
 }
 
 class ListKontak extends StatelessWidget {
-
   ListKontak({this.iconkiri, this.text, this.subtitle, this.iconkanan});
 
   final String iconkiri;
@@ -74,14 +74,22 @@ class ListKontak extends StatelessWidget {
           ],
         ),
         child: ListTile(
-          leading: CircleAvatar(
-                backgroundImage: AssetImage(iconkiri)),
-          title: Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),), 
-          subtitle: Text(subtitle, style: TextStyle(fontSize: 12),),
+          leading: CircleAvatar(backgroundImage: AssetImage(iconkiri)),
+          title: Text(
+            text,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+          subtitle: Text(
+            subtitle,
+            style: TextStyle(fontSize: 12),
+          ),
           dense: true,
-          trailing: Image.asset(iconkanan, height: 20, width: 20,),
+          trailing: Image.asset(
+            iconkanan,
+            height: 20,
+            width: 20,
+          ),
         ),
-        
       ),
     );
   }
