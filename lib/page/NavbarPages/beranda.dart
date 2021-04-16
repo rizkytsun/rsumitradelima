@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/main.dart';
-import 'package:rsumitradelima/page/daftar_poli.dart';
+import 'package:rsumitradelima/page/daftarPoli.dart';
 import 'package:rsumitradelima/page/webView/halamanJurnal.dart';
 import 'package:rsumitradelima/page/webView/halamanKritik.dart';
 import 'package:rsumitradelima/page/webView/halamanKuisioner.dart';
@@ -229,8 +229,8 @@ class _BerandaPageState extends State<BerandaPage> {
                       text: 'Ketersediaan Kamar',
                     ),
                     ButtonKotakHome(
-                      assetKeSvg: 'assets/home/antrian.svg',
-                      text: 'Antrian Poliklinnik',
+                      assetKeSvg: 'assets/home/health-check.svg',
+                      text: 'Periksa Mandiri',
                     ),
                   ],
                 ),

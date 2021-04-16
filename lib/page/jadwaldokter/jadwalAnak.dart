@@ -1,6 +1,9 @@
+import 'dart:async';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
-import 'package:rsumitradelima/page/daftar_poli.dart';
+import 'package:rsumitradelima/page/daftarPoli.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -16,32 +19,48 @@ class JadwalAnak extends StatefulWidget {
 
 class _JadwalAnakState extends State<JadwalAnak> {
   @override
+  void initState() {
+    super.initState();
+    getAPIaccess();
+  }
+
+  var listDokterAPI;
+
+  Future getAPIaccess() async {
+    final String url =
+        'rsumitradelima.com:8080/api-rsmd/index.php/jadwal?fungsi=3&hari=senin&poli=ana';
+    var response = await http
+        .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
+
+        setState(() {
+      if (result.statusCode == 200) {
+        var content = json.decode(result.body);
+        if (content['result'] = true) {
+          data = content['data'];
+          isData = true;
+        } 
+      }
+      isLoadingData = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // var listDokterAPI;
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
         title: new Text('Poliklinik Spesialis Anak'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
-      body: new ListView(
-        children: <Widget>[
-          ListDokter(
-            gambar: "assets/dokter/niluh.png",
-            nama: "dr. Ni luh Putu Herli Mastuti., Sp.A, M.Biomed",
-            jadwal1_hari: "Selasa, Kamis & Jum'at",
-            jadwal1_jam: "15.00 - 17.00",
-            jadwal2_hari: "Sabtu",
-            jadwal2_jam: "13.00 - 15.00",
-          ),
-          ListDokter(
-            gambar: "assets/dokter/dewi.png",
-            nama: "dr. Dewi Nurindah, Sp.A",
-            jadwal1_hari: "Senin",
-            jadwal1_jam: "13.30 - Selesai",
-            jadwal2_hari: "Sabtu",
-            jadwal2_jam: "12.00 - Selesai",
-          ),
-        ],
+      body: new ListView.builder(
+        itemCount: listDokterAPI.length,
+        itemBuilder: (context, i) => ListDokter(
+          nama: listDokterAPI[i]["nama"],
+          hari_kerja: listDokterAPI[i]["hari_kerja"],
+          jam_mulai: listDokterAPI[i]["jam_mulai"],
+          jam_selesai: listDokterAPI[i]["jam_selesai"],
+        ),
       ),
     );
   }
@@ -51,17 +70,17 @@ class ListDokter extends StatelessWidget {
   ListDokter(
       {this.gambar,
       this.nama,
-      this.jadwal1_hari,
-      this.jadwal1_jam,
-      this.jadwal2_hari,
-      this.jadwal2_jam});
+      this.hari_kerja,
+      this.jam_mulai,
+      // this.jadwal2_hari,
+      this.jam_selesai});
 
   final String gambar;
   final String nama;
-  final String jadwal1_hari;
-  final String jadwal1_jam;
-  final String jadwal2_hari;
-  final String jadwal2_jam;
+  final String hari_kerja;
+  final String jam_mulai;
+  // final String jadwal2_hari;
+  final String jam_selesai;
 
   @override
   Widget build(BuildContext context) {
@@ -103,13 +122,13 @@ class ListDokter extends StatelessWidget {
                   children: <Widget>[
                     Flexible(
                       child: Text(
-                        jadwal1_hari,
+                        hari_kerja,
                         style: TextStyle(fontSize: 14.0, color: Colors.grey),
                       ),
                     ),
                     // Expanded(),
                     Text(
-                      jadwal1_jam,
+                      jam_mulai,
                       style: TextStyle(fontSize: 14.0, color: Colors.grey),
                     )
                   ],
@@ -121,14 +140,14 @@ class ListDokter extends StatelessWidget {
                   children: <Widget>[
                     Flexible(
                       child: Text(
-                        jadwal2_hari,
+                        jam_selesai,
                         style: TextStyle(fontSize: 14.0, color: Colors.grey),
                       ),
+                      // child: Text(
+                      //   // jadwal2_hari,
+                      //   style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                      // ),
                     ),
-                    Text(
-                      jadwal2_jam,
-                      style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                    )
                   ],
                 ),
               ],

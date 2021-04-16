@@ -37,6 +37,8 @@ dependencies:
   flutter_icons: ^1.0.0+1
   http: ^0.12.0+4
   webview_flutter: ^0.3.22+1
+  splashscreen:
+  photo_view: any
   
 
 dev_dependencies:
@@ -103,6 +105,12 @@ flutter:
     - assets/kontak/ambulance.png
     - assets/kontak/email.png
     - assets/kontak/email2.png
+    - assets/kontak/ig.png
+    - assets/kontak/ig1.png
+    - assets/kontak/fb.png
+    - assets/kontak/fb1.png
+    - assets/kontak/web.png
+    - assets/kontak/web1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

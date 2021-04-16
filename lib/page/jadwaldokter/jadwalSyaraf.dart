@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
-import 'package:rsumitradelima/page/daftar_poli.dart';
+import 'package:rsumitradelima/page/daftarPoli.dart';
 
 void main() {
   runApp(new MaterialApp(

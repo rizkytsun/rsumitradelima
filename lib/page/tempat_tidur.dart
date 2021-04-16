@@ -18,7 +18,6 @@ class _TempatTidurState extends State<TempatTidur> {
 
     getAPIaccess();
     // getData();
-    
   }
 
   var listKelasTempatTidur;
@@ -31,16 +30,6 @@ class _TempatTidurState extends State<TempatTidur> {
     final String url = 'http://rsumitradelima.com/signature.php';
     var response = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
-        // print("response"+response.toString());
-        
-    // final response =
-    //     await http.get('http://localhost/signatur_bpjs/signature.php');
-    // var response = await http.get(
-    //   Uri.encodeFull('http://localhost/signatur_bpjs/signature.php'),
-    //   headers: {'accept': 'application/json'},
-    // );
-
-
 
     if (response.statusCode == 200 || response.statusCode == 404) {
       var data = json.decode(response.body);
@@ -55,10 +44,7 @@ class _TempatTidurState extends State<TempatTidur> {
       };
     }
     // print(signature);
-    
   }
-
-  
 
   getData() async {
     var list = await http.get(
@@ -115,7 +101,11 @@ class _TempatTidurState extends State<TempatTidur> {
 
 class ListTempatTidur extends StatelessWidget {
   ListTempatTidur(
-      {this.namakelas, this.tersedia, this.kapasitas, this.lastupdate, this.namaruang});
+      {this.namakelas,
+      this.tersedia,
+      this.kapasitas,
+      this.lastupdate,
+      this.namaruang});
 
   final String namakelas;
   final int tersedia;
@@ -165,8 +155,8 @@ class ListTempatTidur extends StatelessWidget {
                     Text(
                       namaruang.toString(),
                       // ListTempatTidur[0]['tersedia'],
-                      style:
-                          TextStyle(fontSize: 10), textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 10),
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 )),
