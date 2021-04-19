@@ -121,10 +121,10 @@ class _BerandaPageState extends State<BerandaPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 30.0, vertical: 15.0),
                   child: Text(
-                    'Berita Terbaru',
+                    'BERITA TERBARU',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 24.0,
+                        fontSize: 16.0,
                         fontFamily: 'OpenSans'),
                   ),
                 ),
@@ -138,12 +138,12 @@ class _BerandaPageState extends State<BerandaPage> {
                           controller: controller,
                           onPageChanged: (index) =>
                               setState(() => timelinePage = index + 1),
-                          itemCount: 3,
+                          itemCount: 5,
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
                               padding: EdgeInsets.symmetric(horizontal: 30.0),
                               child: Image.asset(
-                                'assets/berita.jpeg',
+                                'assets/berita/igd.jpeg',
                                 width: double.infinity,
                               ),
                             );
@@ -185,6 +185,30 @@ class _BerandaPageState extends State<BerandaPage> {
                               height: 10.0,
                               decoration: BoxDecoration(
                                   color: timelinePage == 3
+                                      ? Colors.grey[700]
+                                      : Colors.grey,
+                                  borderRadius: BorderRadius.circular(5)),
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Container(
+                              width: 10.0,
+                              height: 10.0,
+                              decoration: BoxDecoration(
+                                  color: timelinePage == 4
+                                      ? Colors.grey[700]
+                                      : Colors.grey,
+                                  borderRadius: BorderRadius.circular(5)),
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Container(
+                              width: 10.0,
+                              height: 10.0,
+                              decoration: BoxDecoration(
+                                  color: timelinePage == 5
                                       ? Colors.grey[700]
                                       : Colors.grey,
                                   borderRadius: BorderRadius.circular(5)),

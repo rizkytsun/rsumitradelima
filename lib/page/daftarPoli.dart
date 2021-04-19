@@ -191,7 +191,7 @@ class ListJadwal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: new Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
@@ -206,35 +206,38 @@ class ListJadwal extends StatelessWidget {
             ]),
         padding: new EdgeInsets.all(10),
         child: new Center(
-          child: new Row(
-            children: <Widget>[
-              Image.asset(
-                gambar,
-                width: (MediaQuery.of(context).size.width / 4) - 35.0,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              new Container(
-                padding: new EdgeInsets.all(20.0),
-                child: new Center(
-                    child: new Column(
-                  children: <Widget>[
-                    new Text(
-                      klinik,
-                      style: new TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    // new Text(
-                    //   "Ini adalah Deskripsi ",
-                    //   style: new TextStyle(fontSize: 15.0, color: Colors.grey),
-                    // )
-                  ],
-                )),
-              )
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: new Row(
+              children: <Widget>[
+                Image.asset(
+                  gambar,
+                  width: (MediaQuery.of(context).size.width / 4) - 45.0,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                new Container(
+                  padding: new EdgeInsets.all(20.0),
+                  child: new Center(
+                      child: new Column(
+                    children: <Widget>[
+                      new Text(
+                        klinik,
+                        style: new TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      // new Text(
+                      //   "Ini adalah Deskripsi ",
+                      //   style: new TextStyle(fontSize: 15.0, color: Colors.grey),
+                      // )
+                    ],
+                  )),
+                )
+              ],
+            ),
           ),
         ),
       ),

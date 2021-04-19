@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:rsumitradelima/component/Dialogs.dart';
 import 'package:rsumitradelima/components.dart';
 import 'package:rsumitradelima/page/daftarPoli.dart';
 
@@ -24,21 +26,34 @@ class _JadwalAnakState extends State<JadwalAnak> {
     getAPIaccess();
   }
 
+  List data;
+  bool isLoadingData = true;
+  bool isData = false;
+
   var listDokterAPI;
 
   Future getAPIaccess() async {
     final String url =
         'rsumitradelima.com:8080/api-rsmd/index.php/jadwal?fungsi=3&hari=senin&poli=ana';
-    var response = await http
+    var result = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
 
-        setState(() {
+    setState(() {
       if (result.statusCode == 200) {
         var content = json.decode(result.body);
         if (content['result'] = true) {
           data = content['data'];
           isData = true;
-        } 
+        } else if (content['result'] = false) {
+          showDialog(
+              barrierDismissible: true,
+              context: context,
+              builder: (_) => FunkyOverlay(content['data'], [
+                    FlatButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text('OK'))
+                  ]));
+        }
       }
       isLoadingData = false;
     });
