@@ -26,7 +26,12 @@ class _JadwalAnakState extends State<JadwalAnak> {
     getAPIaccess();
   }
 
-  List data;
+  List<String> listAsset = [
+    "assets/dokter/niluh.png",
+    "assets/dokter/dewi.png",
+  ];
+
+  var data;
   bool isLoadingData = true;
   bool isData = false;
 
@@ -34,25 +39,16 @@ class _JadwalAnakState extends State<JadwalAnak> {
 
   Future getAPIaccess() async {
     final String url =
-        'rsumitradelima.com:8080/api-rsmd/index.php/jadwal?fungsi=3&hari=senin&poli=ana';
+        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=ana';
     var result = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
 
     setState(() {
       if (result.statusCode == 200) {
         var content = json.decode(result.body);
-        if (content['result'] = true) {
-          data = content['data'];
+        if (content['status'] == 'sukses') {
+          listDokterAPI = content['data'];
           isData = true;
-        } else if (content['result'] = false) {
-          showDialog(
-              barrierDismissible: true,
-              context: context,
-              builder: (_) => FunkyOverlay(content['data'], [
-                    FlatButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: Text('OK'))
-                  ]));
         }
       }
       isLoadingData = false;
@@ -68,34 +64,27 @@ class _JadwalAnakState extends State<JadwalAnak> {
         title: new Text('Poliklinik Spesialis Anak'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
-      body: new ListView.builder(
-        itemCount: listDokterAPI.length,
-        itemBuilder: (context, i) => ListDokter(
-          nama: listDokterAPI[i]["nama"],
-          hari_kerja: listDokterAPI[i]["hari_kerja"],
-          jam_mulai: listDokterAPI[i]["jam_mulai"],
-          jam_selesai: listDokterAPI[i]["jam_selesai"],
-        ),
-      ),
+      body: isLoadingData
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: listDokterAPI.length,
+              itemBuilder: (context, i) => ListDokter(
+                gambar: listAsset[i],
+                nama: listDokterAPI[i]["nm_dokter"],
+                listJadwal: listDokterAPI[i]["det_dokter"],
+              ),
+            ),
     );
   }
 }
 
 class ListDokter extends StatelessWidget {
-  ListDokter(
-      {this.gambar,
-      this.nama,
-      this.hari_kerja,
-      this.jam_mulai,
-      // this.jadwal2_hari,
-      this.jam_selesai});
+  ListDokter({this.gambar, this.nama, this.listJadwal});
 
   final String gambar;
   final String nama;
-  final String hari_kerja;
-  final String jam_mulai;
-  // final String jadwal2_hari;
-  final String jam_selesai;
+  final List<dynamic> listJadwal;
+  // Map<String, >
 
   @override
   Widget build(BuildContext context) {
@@ -118,54 +107,47 @@ class ListDokter extends StatelessWidget {
           leading: CircleAvatar(
               // backgroundColor: Colors.transparent,
               backgroundImage: AssetImage(gambar)),
-          title: Text(
-            nama,
-            style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
+          title: Column(
+            children: <Widget>[
+              Text(
+                nama,
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              Divider(color: Colors.grey),
+            ],
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: listJadwal.length,
+              itemBuilder: (context, i) => Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Flexible(
                       child: Text(
-                        hari_kerja,
+                        listJadwal[i]['hari_kerja'],
                         style: TextStyle(fontSize: 14.0, color: Colors.grey),
                       ),
                     ),
                     // Expanded(),
                     Text(
-                      jam_mulai,
+                      listJadwal[i]['jam_mulai'] +
+                          " - " +
+                          listJadwal[i]['jam_selesai'],
                       style: TextStyle(fontSize: 14.0, color: Colors.grey),
                     )
                   ],
                 ),
-                Divider(color: Colors.grey[600]),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Flexible(
-                      child: Text(
-                        jam_selesai,
-                        style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                      ),
-                      // child: Text(
-                      //   // jadwal2_hari,
-                      //   style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                      // ),
-                    ),
-                  ],
-                ),
-              ],
+              ),
             ),
           ),
           dense: true,
