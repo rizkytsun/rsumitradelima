@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
 import 'package:http/http.dart' as http;
-
 import 'package:flutter/material.dart';
-import 'package:rsumitradelima/component/Dialogs.dart';
 import 'package:rsumitradelima/components.dart';
-import 'package:rsumitradelima/page/daftarPoli.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -84,7 +82,6 @@ class ListDokter extends StatelessWidget {
   final String gambar;
   final String nama;
   final List<dynamic> listJadwal;
-  // Map<String, >
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +101,19 @@ class ListDokter extends StatelessWidget {
               )
             ]),
         child: ListTile(
-          leading: CircleAvatar(
-              // backgroundColor: Colors.transparent,
-              backgroundImage: AssetImage(gambar)),
+          leading: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              // color: Colors.grey,
+              image: DecorationImage(
+                fit: BoxFit.contain,
+                image: AssetImage(gambar),
+              ),
+            ),
+          ),
+
           title: Column(
             children: <Widget>[
               Text(
@@ -138,7 +145,6 @@ class ListDokter extends StatelessWidget {
                         style: TextStyle(fontSize: 14.0, color: Colors.grey),
                       ),
                     ),
-                    // Expanded(),
                     Text(
                       listJadwal[i]['jam_mulai'] +
                           " - " +

@@ -229,10 +229,6 @@ class ListJadwal extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
-                      // new Text(
-                      //   "Ini adalah Deskripsi ",
-                      //   style: new TextStyle(fontSize: 15.0, color: Colors.grey),
-                      // )
                     ],
                   )),
                 )
