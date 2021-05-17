@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalAnak.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalBedah.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalDalam.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalKGA.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalKandungan.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalOrtho.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalRehab.dart';
@@ -71,6 +73,15 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
+                    MaterialPageRoute(builder: (_) => JadwalBedah()),
+                  ),
+              child: ListJadwal(
+                gambar: 'assets/jadwaldokter/dalam.png',
+                klinik: 'Klinik Spesialis Bedah',
+              )),
+          InkWell(
+              onTap: () => Navigator.push(
+                    context,
                     MaterialPageRoute(builder: (_) => JadwalSyaraf()),
                   ),
               child: ListJadwal(
@@ -121,6 +132,15 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/gigi.png',
                 klinik: 'Klinik Gigi Spesialis',
+              )),
+          InkWell(
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => JadwalKGA()),
+                  ),
+              child: ListJadwal(
+                gambar: 'assets/jadwaldokter/gigi.png',
+                klinik: 'Klinik Kedokteran Gigi Anak',
               )),
           InkWell(
               onTap: () => Navigator.push(

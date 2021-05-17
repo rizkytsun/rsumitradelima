@@ -1,10 +1,13 @@
+import 'dart:async';
+import 'dart:convert';
+// import 'dart:html';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
-import 'package:rsumitradelima/page/daftarPoli.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "jadwalRehab",
+    title: "JadwalRehab",
     home: new JadwalRehab(),
   ));
 }
@@ -16,52 +19,69 @@ class JadwalRehab extends StatefulWidget {
 
 class _JadwalRehabState extends State<JadwalRehab> {
   @override
+  void initState() {
+    super.initState();
+    getAPIaccess();
+  }
+
+  List<String> listAsset = [
+    "assets/dokter/rahmad.png",
+    "assets/dokter/ria.png",
+  ];
+
+  var data;
+  bool isLoadingData = true;
+  bool isData = false;
+
+  var listDokterAPI;
+
+  Future getAPIaccess() async {
+    final String url =
+        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=rh';
+    var result = await http
+        .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
+
+    setState(() {
+      if (result.statusCode == 200) {
+        var content = json.decode(result.body);
+        if (content['status'] == 'sukses') {
+          listDokterAPI = content['data'];
+          isData = true;
+        }
+      }
+      isLoadingData = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // var listDokterAPI;
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: new Text('Poliklinik Spesialis Rehab Medik'),
+        title: new Text('Poliklinik Spesialis Anak'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
-      body: new ListView(
-        children: <Widget>[
-          ListDokter(
-            gambar: "assets/dokter/user.png",
-            nama: "dr. Rahmad, Sp. KFR",
-            jadwal1_hari: "Senin - Sabtu",
-            jadwal1_jam: "08.00 - 18.00",
-            jadwal2_hari: "",
-            jadwal2_jam: "",
-          ),
-          // ListDokter(
-          //   gambar: "assets/dokter/widi.png",
-          //   nama: "dr. Widi Hatmaka, Sp. OG",
-          //   jadwal1_hari: "Selasa, Rabu & Jum'at",
-          //   jadwal1_jam: "16.30 - 18.00",
-          //   jadwal2_hari: "Sabtu",
-          //   jadwal2_jam: "10.00 - Selesai",
-          // ),
-        ],
-      ),
+      body: isLoadingData
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: listDokterAPI.length,
+              itemBuilder: (context, i) => ListDokter(
+                gambar: listAsset[i],
+                nama: listDokterAPI[i]["nm_dokter"],
+                listJadwal: listDokterAPI[i]["det_dokter"],
+              ),
+            ),
     );
   }
 }
 
 class ListDokter extends StatelessWidget {
-  ListDokter(
-      {this.gambar,
-      this.nama,
-      this.jadwal1_hari,
-      this.jadwal1_jam,
-      this.jadwal2_hari,
-      this.jadwal2_jam});
+  ListDokter({this.gambar, this.nama, this.listJadwal});
 
   final String gambar;
   final String nama;
-  final String jadwal1_hari;
-  final String jadwal1_jam;
-  final String jadwal2_hari;
-  final String jadwal2_jam;
+  final List<dynamic> listJadwal;
 
   @override
   Widget build(BuildContext context) {
@@ -81,57 +101,58 @@ class ListDokter extends StatelessWidget {
               )
             ]),
         child: ListTile(
-          leading: CircleAvatar(
-              // backgroundColor: Colors.transparent,
-              backgroundImage: AssetImage(gambar)),
-          title: Text(
-            nama,
-            style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
+          leading: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.blue,
+              image: DecorationImage(
+                fit: BoxFit.contain,
+                image: AssetImage(gambar),
+              ),
+            ),
+          ),
+          title: Column(
+            children: <Widget>[
+              Text(
+                nama,
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              Divider(color: Colors.grey),
+            ],
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: listJadwal.length,
+              itemBuilder: (context, i) => Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Flexible(
                       child: Text(
-                        jadwal1_hari,
-                        style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                      ),
-                    ),
-                    // Expanded(),
-                    Text(
-                      jadwal1_jam,
-                      style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                    )
-                  ],
-                ),
-                Divider(color: Colors.grey[600]),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Flexible(
-                      child: Text(
-                        jadwal2_hari,
+                        listJadwal[i]['hari_kerja'],
                         style: TextStyle(fontSize: 14.0, color: Colors.grey),
                       ),
                     ),
                     Text(
-                      jadwal2_jam,
+                      listJadwal[i]['jam_mulai'] +
+                          " - " +
+                          listJadwal[i]['jam_selesai'],
                       style: TextStyle(fontSize: 14.0, color: Colors.grey),
                     )
                   ],
                 ),
-              ],
+              ),
             ),
           ),
           dense: true,

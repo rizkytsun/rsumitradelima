@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
+// import 'dart:html';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
@@ -106,14 +106,13 @@ class ListDokter extends StatelessWidget {
             height: 50,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              // color: Colors.grey,
+              color: Colors.blue,
               image: DecorationImage(
                 fit: BoxFit.contain,
                 image: AssetImage(gambar),
               ),
             ),
           ),
-
           title: Column(
             children: <Widget>[
               Text(

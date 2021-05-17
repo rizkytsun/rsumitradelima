@@ -7,17 +7,17 @@ import 'package:rsumitradelima/components.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "JadwalParu",
-    home: new JadwalParu(),
+    title: "JadwalBedah",
+    home: new JadwalBedah(),
   ));
 }
 
-class JadwalParu extends StatefulWidget {
+class JadwalBedah extends StatefulWidget {
   @override
-  _JadwalParuState createState() => _JadwalParuState();
+  _JadwalBedahState createState() => _JadwalBedahState();
 }
 
-class _JadwalParuState extends State<JadwalParu> {
+class _JadwalBedahState extends State<JadwalBedah> {
   @override
   void initState() {
     super.initState();
@@ -25,8 +25,8 @@ class _JadwalParuState extends State<JadwalParu> {
   }
 
   List<String> listAsset = [
-    "assets/dokter/sastia.png",
-    "assets/dokter/garin.png",
+    "assets/dokter/deddy.png",
+    "assets/dokter/user.png",
   ];
 
   var data;
@@ -37,7 +37,7 @@ class _JadwalParuState extends State<JadwalParu> {
 
   Future getAPIaccess() async {
     final String url =
-        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=par';
+        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=bd';
     var result = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
 
@@ -59,7 +59,7 @@ class _JadwalParuState extends State<JadwalParu> {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: new Text('Poliklinik Spesialis Paru'),
+        title: new Text('Poliklinik Spesialis Bedah'),
       ),
       backgroundColor: MyConstants().colorJadwalDR,
       body: isLoadingData
