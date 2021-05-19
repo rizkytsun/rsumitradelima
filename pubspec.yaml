@@ -86,6 +86,7 @@ flutter:
     - assets/jadwaldokter/urologi.png
     - assets/jadwaldokter/tht.png
     - assets/jadwaldokter/jiwa.png
+    - assets/jadwaldokter/jantung.png
     - assets/dokter/andi.png
     - assets/dokter/ade.png
     - assets/dokter/niluh.png
@@ -108,7 +109,7 @@ flutter:
     - assets/dokter/maya.png
     - assets/dokter/vivi.png
     - assets/dokter/deddy.png
-    - assets/dokter/vivi.png
+    - assets/dokter/badariyatud.png
     - assets/dokter/vivi.png
     - assets/dokter/vivi.png
     - assets/dokter/vivi.png

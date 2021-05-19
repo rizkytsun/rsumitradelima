@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalAnak.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalBedah.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalBedahPlastik.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalDalam.dart';
+import 'package:rsumitradelima/page/jadwaldokter/jadwalJantung.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalKGA.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalKandungan.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalOrtho.dart';
@@ -76,8 +78,17 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
                     MaterialPageRoute(builder: (_) => JadwalBedah()),
                   ),
               child: ListJadwal(
-                gambar: 'assets/jadwaldokter/dalam.png',
+                gambar: 'assets/jadwaldokter/bedah.png',
                 klinik: 'Klinik Spesialis Bedah',
+              )),
+          InkWell(
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => JadwalBedahPlastik()),
+                  ),
+              child: ListJadwal(
+                gambar: 'assets/jadwaldokter/bedahplastik.png',
+                klinik: 'Klinik Spesialis Bedah Plastik',
               )),
           InkWell(
               onTap: () => Navigator.push(
@@ -150,6 +161,15 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/paru.png',
                 klinik: 'Klinik Spesialis paru',
+              )),
+          InkWell(
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => JadwalJantung()),
+                  ),
+              child: ListJadwal(
+                gambar: 'assets/jadwaldokter/jantung.png',
+                klinik: 'Klinik Spesialis Jantung',
               )),
           InkWell(
               onTap: () => Navigator.push(
