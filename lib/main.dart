@@ -63,7 +63,7 @@ class _LoginState extends State<Login> {
       case 2:
         return KontakPage();
       case 3:
-        return AdminPage();
+        return SumberData();
         break;
     }
   }
@@ -71,7 +71,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyConstants().colorJadwalDR,
+      backgroundColor: MyConstants().colorRSMDbg,
       body: _getBody(_selectedIndex),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -79,7 +79,12 @@ class _LoginState extends State<Login> {
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
-              BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(.1))
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
             ],
             borderRadius: BorderRadius.circular(30),
           ),
@@ -99,7 +104,6 @@ class _LoginState extends State<Login> {
                         text: 'Beranda',
                       ),
                       GButton(
-                      
                         icon: LineAwesomeIcons.globe,
                         text: 'Berita',
                       ),

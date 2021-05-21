@@ -9,9 +9,7 @@ class _BeritaPageState extends State<BeritaPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: 
-        Text('Hello World'),
-      
+      child: Text('Hello World'),
     );
   }
 }

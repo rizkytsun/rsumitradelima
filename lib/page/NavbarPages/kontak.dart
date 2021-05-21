@@ -70,7 +70,7 @@ class _KontakPageState extends State<KontakPage> {
         backgroundColor: MyConstants().colorJadwalDR,
         title: Text("KONTAK"),
       ),
-      backgroundColor: MyConstants().colorJadwalDR,
+      backgroundColor: MyConstants().colorRSMDbg,
       body: ListView(
         children: <Widget>[
           InkWell(

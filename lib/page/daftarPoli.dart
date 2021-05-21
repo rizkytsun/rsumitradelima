@@ -40,7 +40,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
         backgroundColor: MyConstants().colorJadwalDR,
         title: new Text('DAFTAR POLIKLINIK'),
       ),
-      backgroundColor: MyConstants().colorJadwalDR,
+      backgroundColor: MyConstants().colorRSMDbg,
       body: new ListView(
         children: <Widget>[
           Container(
@@ -231,16 +231,16 @@ class ListJadwal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.only(left: 12, right: 12, top: 7, bottom: 5),
       child: new Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(7),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withOpacity(0.3),
                 spreadRadius: 2,
-                blurRadius: 7,
+                blurRadius: 6,
                 offset: Offset(0, 2),
               )
             ]),
@@ -252,7 +252,7 @@ class ListJadwal extends StatelessWidget {
               children: <Widget>[
                 Image.asset(
                   gambar,
-                  width: (MediaQuery.of(context).size.width / 4) - 45.0,
+                  width: (MediaQuery.of(context).size.width / 10) - 5.0,
                 ),
                 SizedBox(
                   height: 20,

@@ -39,6 +39,7 @@ dependencies:
   webview_flutter: ^0.3.22+1
   splashscreen:
   photo_view: any
+  full_screen_image: any
   
 
 dev_dependencies:
@@ -110,9 +111,9 @@ flutter:
     - assets/dokter/vivi.png
     - assets/dokter/deddy.png
     - assets/dokter/badariyatud.png
-    - assets/dokter/vivi.png
-    - assets/dokter/vivi.png
-    - assets/dokter/vivi.png
+    - assets/dokter/ria.png
+    - assets/dokter/kartika.png
+    - assets/dokter/luqman.png
     - assets/dokter/vivi.png
     - assets/dokter/vivi.png
     - assets/kontak/map.png

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -61,7 +62,7 @@ class _JadwalParuState extends State<JadwalParu> {
         backgroundColor: MyConstants().colorJadwalDR,
         title: new Text('Poliklinik Spesialis Paru'),
       ),
-      backgroundColor: MyConstants().colorJadwalDR,
+      backgroundColor: MyConstants().colorRSMDbg,
       body: isLoadingData
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
@@ -101,15 +102,16 @@ class ListDokter extends StatelessWidget {
               )
             ]),
         child: ListTile(
-          leading: Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.blue,
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage(gambar),
+          leading: FullScreenWidget(
+            child: Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.contain,
+                  image: AssetImage(gambar),
+                ),
               ),
             ),
           ),

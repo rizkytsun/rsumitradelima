@@ -85,7 +85,7 @@ class _BerandaPageState extends State<BerandaPage> {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-              color: Colors.white60,
+              color: MyConstants().colorJadwalDR,
               borderRadius:
                   BorderRadius.vertical(bottom: Radius.circular(0.0))),
           child: SafeArea(
@@ -296,7 +296,7 @@ class _BerandaPageState extends State<BerandaPage> {
                             MaterialPageRoute(
                                 builder: (_) => HalamanJurnal(
                                     selectedUrl:
-                                        "http://www.rsumitradelima.com/#cbp=http://www.rsumitradelima.com/index.php/Tampil/tampebook"))),
+                                        "http://www.rsumitradelima.com/index.php/jurnal"))),
                         assetKeSvg: 'assets/home/library.svg',
                         text: 'Elektronik Jurnal',
                       ),
@@ -323,14 +323,14 @@ class ButtonKotakHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 4,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              color: Colors.black.withOpacity(0.3),
+              spreadRadius: 2,
+              blurRadius: 6,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ]),
       width: MediaQuery.of(context).size.width / 4 - 10.0,

@@ -78,7 +78,7 @@ class _TempatTidurState extends State<TempatTidur> {
           backgroundColor: MyConstants().colorJadwalDR,
           title: Text('KETERSEDIAAN KAMAR'),
         ),
-        backgroundColor: MyConstants().colorJadwalDR,
+        backgroundColor: MyConstants().colorRSMDbg,
         body: isLoading
             ? Center(
                 child: CircularProgressIndicator(

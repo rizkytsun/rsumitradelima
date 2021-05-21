@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 class MyConstants {
   final Color colorRSMDblue = Color(0xFF284b8c);
   final Color colorRSMDgreen = Color(0xFF00a859);
-  final Color colorRSMDbg = Color(0xFFd7d7f4);
-  final Color colorJadwalDR = Color(0xFFd7d7f4);
+  final Color colorRSMDbg = Color(0xFFc2e6ff);
+  final Color colorJadwalDR = Color(0xFF80cbff);
+  final Color colorHalamanAwal = Color(0xFFffd9d9);
   // final Color colorJadwalDR = Color(0xFF8DD1EA);
-  final Color colorBeranda = Color(0xFFA15757);
+  final Color colorBeranda = Color(0xFFffb5b5);
 }
 
 class MyAppBar extends StatelessWidget {

@@ -26,7 +26,7 @@ class _ListMenuDaftarOnlineState extends State<ListMenuDaftarOnline> {
         backgroundColor: MyConstants().colorJadwalDR,
         title: Text('LIST PENDAFTARAN ONLINE'),
       ),
-      backgroundColor: MyConstants().colorJadwalDR,
+      backgroundColor: MyConstants().colorRSMDbg,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
@@ -42,7 +42,7 @@ class _ListMenuDaftarOnlineState extends State<ListMenuDaftarOnline> {
                                 selectedUrl:
                                     "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
                     assetKeSvg: 'assets/home/www.svg',
-                    text: 'DAFTAR VIA APLIKASI',
+                    text: 'DAFTAR VIA WEBSITE',
                   ),
                   SizedBox(
                     height: 20,
@@ -77,13 +77,13 @@ class ButtonKotakDaftar extends StatelessWidget {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 5,
+              color: Colors.black.withOpacity(0.3),
+              spreadRadius: 2,
               blurRadius: 5,
               offset: Offset(0, 3), // changes position of shadow
             ),
           ]),
-      width: MediaQuery.of(context).size.width / 2 - 10.0,
+      width: MediaQuery.of(context).size.width / 1 - 15.0,
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -96,10 +96,10 @@ class ButtonKotakDaftar extends StatelessWidget {
                 Container(
                     child: SvgPicture.asset(
                   assetKeSvg,
-                  width: (MediaQuery.of(context).size.width / 3) - 15.0 - 15.0,
+                  width: (MediaQuery.of(context).size.width / 4) - 15.0 - 15.0,
                 )),
                 SizedBox(
-                  height: 10,
+                  height: 35,
                 ),
                 Flexible(
                     child: Text(

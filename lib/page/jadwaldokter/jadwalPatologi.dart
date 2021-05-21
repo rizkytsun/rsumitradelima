@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 // import 'dart:html';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
@@ -25,7 +26,7 @@ class _JadwalPatologiState extends State<JadwalPatologi> {
   }
 
   List<String> listAsset = [
-    "assets/dokter/user.png",
+    "assets/dokter/luqman.png",
     "assets/dokter/user.png",
   ];
 
@@ -37,7 +38,7 @@ class _JadwalPatologiState extends State<JadwalPatologi> {
 
   Future getAPIaccess() async {
     final String url =
-        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=kk';
+        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=pa';
     var result = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
 
@@ -62,7 +63,7 @@ class _JadwalPatologiState extends State<JadwalPatologi> {
         title:
             Flexible(child: new Text('Poliklinik Spesialis Patologi Anatomi')),
       ),
-      backgroundColor: MyConstants().colorJadwalDR,
+      backgroundColor: MyConstants().colorRSMDbg,
       body: isLoadingData
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
@@ -102,15 +103,16 @@ class ListDokter extends StatelessWidget {
               )
             ]),
         child: ListTile(
-          leading: Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.blue,
-              image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage(gambar),
+          leading: FullScreenWidget(
+            child: Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.contain,
+                  image: AssetImage(gambar),
+                ),
               ),
             ),
           ),
