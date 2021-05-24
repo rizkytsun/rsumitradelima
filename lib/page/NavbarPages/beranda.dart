@@ -10,8 +10,8 @@ import 'package:rsumitradelima/page/tempat_tidur.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rsumitradelima/components.dart';
-
 import '../menuDaftarOnline.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class BerandaPage extends StatefulWidget {
   @override
@@ -30,6 +30,8 @@ class _BerandaPageState extends State<BerandaPage> {
   final PageController controller2 = PageController(
     initialPage: beritaPage,
   );
+
+  get callbackFunction => null;
 
   _launchWebApp() async {
     const url = 'https://wa.me/6281217442444?text=DAFTARPOLI';
@@ -128,97 +130,118 @@ class _BerandaPageState extends State<BerandaPage> {
                         fontFamily: 'OpenSans'),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        height: 250.0,
-                        child: PageView.builder(
-                          controller: controller,
-                          onPageChanged: (index) =>
-                              setState(() => timelinePage = index + 1),
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 30.0),
-                              child: Image.asset(
-                                'assets/berita/igd.jpeg',
-                                width: double.infinity,
-                              ),
-                            );
-                          },
-                          physics: BouncingScrollPhysics(),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 250,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 0.8,
+                  ),
+                  items: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        image: DecorationImage(
+                          image: AssetImage('assets/berita/igd.jpeg'),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                              width: 10.0,
-                              height: 10.0,
-                              decoration: BoxDecoration(
-                                  color: timelinePage == 1
-                                      ? Colors.grey[700]
-                                      : Colors.grey,
-                                  borderRadius: BorderRadius.circular(5)),
-                            ),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Container(
-                              width: 10.0,
-                              height: 10.0,
-                              decoration: BoxDecoration(
-                                  color: timelinePage == 2
-                                      ? Colors.grey[700]
-                                      : Colors.grey,
-                                  borderRadius: BorderRadius.circular(5)),
-                            ),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Container(
-                              width: 10.0,
-                              height: 10.0,
-                              decoration: BoxDecoration(
-                                  color: timelinePage == 3
-                                      ? Colors.grey[700]
-                                      : Colors.grey,
-                                  borderRadius: BorderRadius.circular(5)),
-                            ),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Container(
-                              width: 10.0,
-                              height: 10.0,
-                              decoration: BoxDecoration(
-                                  color: timelinePage == 4
-                                      ? Colors.grey[700]
-                                      : Colors.grey,
-                                  borderRadius: BorderRadius.circular(5)),
-                            ),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Container(
-                              width: 10.0,
-                              height: 10.0,
-                              decoration: BoxDecoration(
-                                  color: timelinePage == 5
-                                      ? Colors.grey[700]
-                                      : Colors.grey,
-                                  borderRadius: BorderRadius.circular(5)),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
+
+                // Container(
+                //   width: MediaQuery.of(context).size.width,
+                //   child: Column(
+                //     children: <Widget>[
+                //       Container(
+                //         height: 250.0,
+                //         child: PageView.builder(
+                //           controller: controller,
+                //           onPageChanged: (index) =>
+                //               setState(() => timelinePage = index + 1),
+                //           itemCount: 5,
+                //           itemBuilder: (BuildContext context, int index) {
+                //             return Padding(
+                //               padding: EdgeInsets.symmetric(horizontal: 30.0),
+                //               child: Image.network(
+                //                   'http://www.rsumitradelima.com/assets/timeline/sahabat_dokter.png'),
+                //             );
+                //           },
+                //           physics: BouncingScrollPhysics(),
+                //         ),
+                //       ),
+                //       Padding(
+                //         padding: EdgeInsets.all(5.0),
+                //         child: Row(
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: <Widget>[
+                //             Container(
+                //               width: 10.0,
+                //               height: 10.0,
+                //               decoration: BoxDecoration(
+                //                   color: timelinePage == 1
+                //                       ? Colors.grey[700]
+                //                       : Colors.grey,
+                //                   borderRadius: BorderRadius.circular(5)),
+                //             ),
+                //             SizedBox(
+                //               width: 20.0,
+                //             ),
+                //             Container(
+                //               width: 10.0,
+                //               height: 10.0,
+                //               decoration: BoxDecoration(
+                //                   color: timelinePage == 2
+                //                       ? Colors.grey[700]
+                //                       : Colors.grey,
+                //                   borderRadius: BorderRadius.circular(5)),
+                //             ),
+                //             SizedBox(
+                //               width: 20.0,
+                //             ),
+                //             Container(
+                //               width: 10.0,
+                //               height: 10.0,
+                //               decoration: BoxDecoration(
+                //                   color: timelinePage == 3
+                //                       ? Colors.grey[700]
+                //                       : Colors.grey,
+                //                   borderRadius: BorderRadius.circular(5)),
+                //             ),
+                //             SizedBox(
+                //               width: 20.0,
+                //             ),
+                //             Container(
+                //               width: 10.0,
+                //               height: 10.0,
+                //               decoration: BoxDecoration(
+                //                   color: timelinePage == 4
+                //                       ? Colors.grey[700]
+                //                       : Colors.grey,
+                //                   borderRadius: BorderRadius.circular(5)),
+                //             ),
+                //             SizedBox(
+                //               width: 20.0,
+                //             ),
+                //             Container(
+                //               width: 10.0,
+                //               height: 10.0,
+                //               decoration: BoxDecoration(
+                //                   color: timelinePage == 5
+                //                       ? Colors.grey[700]
+                //                       : Colors.grey,
+                //                   borderRadius: BorderRadius.circular(5)),
+                //             ),
+                //           ],
+                //         ),
+                //       )
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: 20,
                 ),

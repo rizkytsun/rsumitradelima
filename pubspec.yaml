@@ -38,8 +38,8 @@ dependencies:
   http: ^0.12.0+4
   webview_flutter: ^0.3.22+1
   splashscreen:
-  photo_view: any
   full_screen_image: any
+  carousel_slider: any
   
 
 dev_dependencies:
