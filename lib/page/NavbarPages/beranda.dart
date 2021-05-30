@@ -92,15 +92,15 @@ class _BerandaPageState extends State<BerandaPage> {
                   BorderRadius.vertical(bottom: Radius.circular(0.0))),
           child: SafeArea(
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(1.0),
               child: Center(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset(
-                    'assets/header.png',
-                    width: (MediaQuery.of(context).size.width / 1) - 10.0,
-                  ),
+                  // Image.asset(
+                  //   'assets/header.png',
+                  //   width: (MediaQuery.of(context).size.width / 1) - 2.0,
+                  // ),
                   // Text(
                   //   " RSU MITRA DELIMA",
                   //   style:
@@ -119,212 +119,180 @@ class _BerandaPageState extends State<BerandaPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 30.0, vertical: 15.0),
-                  child: Text(
-                    'BERITA TERBARU',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                        fontFamily: 'OpenSans'),
-                  ),
-                ),
-                CarouselSlider(
-                  options: CarouselOptions(
-                    height: 250,
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                    aspectRatio: 16 / 9,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.8,
-                  ),
-                  items: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        image: DecorationImage(
-                          image: AssetImage('assets/berita/igd.jpeg'),
+                Container(
+                  color: MyConstants().colorJadwalDR,
+                  child: Column(
+                    children: <Widget>[
+
+                      SizedBox(height: 10,),
+                      Material(
+                        color: Colors.transparent,
+                          child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(Icons.notifications_none, size: 25,),
+                              
+                              onPressed: () {},
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: MyConstants().colorRSMDbg,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 30.0, vertical: 8.0),
+                                  child: Text(
+                                    'TIMELINE',
+                                    style: TextStyle(
+                                      color: MyConstants().colorJadwalDR,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16.0,),
+                                  ),
+                              ),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.info_outline, size: 25,),
+                              onPressed: () {},
+                            ),
+                          ],
                         ),
                       ),
-                    )
-                  ],
-                ),
 
-                // Container(
-                //   width: MediaQuery.of(context).size.width,
-                //   child: Column(
-                //     children: <Widget>[
-                //       Container(
-                //         height: 250.0,
-                //         child: PageView.builder(
-                //           controller: controller,
-                //           onPageChanged: (index) =>
-                //               setState(() => timelinePage = index + 1),
-                //           itemCount: 5,
-                //           itemBuilder: (BuildContext context, int index) {
-                //             return Padding(
-                //               padding: EdgeInsets.symmetric(horizontal: 30.0),
-                //               child: Image.network(
-                //                   'http://www.rsumitradelima.com/assets/timeline/sahabat_dokter.png'),
-                //             );
-                //           },
-                //           physics: BouncingScrollPhysics(),
-                //         ),
-                //       ),
-                //       Padding(
-                //         padding: EdgeInsets.all(5.0),
-                //         child: Row(
-                //           mainAxisAlignment: MainAxisAlignment.center,
-                //           children: <Widget>[
-                //             Container(
-                //               width: 10.0,
-                //               height: 10.0,
-                //               decoration: BoxDecoration(
-                //                   color: timelinePage == 1
-                //                       ? Colors.grey[700]
-                //                       : Colors.grey,
-                //                   borderRadius: BorderRadius.circular(5)),
-                //             ),
-                //             SizedBox(
-                //               width: 20.0,
-                //             ),
-                //             Container(
-                //               width: 10.0,
-                //               height: 10.0,
-                //               decoration: BoxDecoration(
-                //                   color: timelinePage == 2
-                //                       ? Colors.grey[700]
-                //                       : Colors.grey,
-                //                   borderRadius: BorderRadius.circular(5)),
-                //             ),
-                //             SizedBox(
-                //               width: 20.0,
-                //             ),
-                //             Container(
-                //               width: 10.0,
-                //               height: 10.0,
-                //               decoration: BoxDecoration(
-                //                   color: timelinePage == 3
-                //                       ? Colors.grey[700]
-                //                       : Colors.grey,
-                //                   borderRadius: BorderRadius.circular(5)),
-                //             ),
-                //             SizedBox(
-                //               width: 20.0,
-                //             ),
-                //             Container(
-                //               width: 10.0,
-                //               height: 10.0,
-                //               decoration: BoxDecoration(
-                //                   color: timelinePage == 4
-                //                       ? Colors.grey[700]
-                //                       : Colors.grey,
-                //                   borderRadius: BorderRadius.circular(5)),
-                //             ),
-                //             SizedBox(
-                //               width: 20.0,
-                //             ),
-                //             Container(
-                //               width: 10.0,
-                //               height: 10.0,
-                //               decoration: BoxDecoration(
-                //                   color: timelinePage == 5
-                //                       ? Colors.grey[700]
-                //                       : Colors.grey,
-                //                   borderRadius: BorderRadius.circular(5)),
-                //             ),
-                //           ],
-                //         ),
-                //       )
-                //     ],
-                //   ),
-                // ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    ButtonKotakHome(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => ListMenuDaftarOnline())),
-                      // builder: (_) => HalamanUtama(
-                      //     selectedUrl:
-                      //         "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
-                      assetKeSvg: 'assets/home/pendaftaran.svg',
-                      text: 'Pendaftaran Online',
-                    ),
-                    ButtonKotakHome(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => DaftarPoliklinik()),
+                      SizedBox(height: 10,),
+
+                      CarouselSlider(
+                        options: CarouselOptions(
+                          height: 200,
+                          enlargeCenterPage: true,
+                          autoPlay: true,
+                          aspectRatio: 16 / 9,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration: Duration(milliseconds: 1000),
+                          viewportFraction: 0.7,
+                        ),
+                        items: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              image: DecorationImage(
+                                image: AssetImage('assets/timeline.png'),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                      assetKeSvg: 'assets/home/jadwal-dokter.svg',
-                      text: 'Daftar Poliklinik',
-                    ),
-                    ButtonKotakHome(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => TempatTidur()),
-                      ),
-                      assetKeSvg: 'assets/home/tempat-tidur.svg',
-                      text: 'Ketersediaan Kamar',
-                    ),
-                    ButtonKotakHome(
-                      assetKeSvg: 'assets/home/health-check.svg',
-                      text: 'Periksa Mandiri',
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                IntrinsicHeight(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      ButtonKotakHome(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => HalamanKuisioner(
-                                    selectedUrl:
-                                        "https://docs.google.com/forms/d/e/1FAIpQLSfzGqp_Ji1faeTCuGeMIb8C95CbREFQrau1J7pvCG3tJlS7NQ/viewform?usp=sf_link"))),
-                        assetKeSvg: 'assets/home/rating.svg',
-                        text: 'Kuisioner Rawat Inap',
-                      ),
-                      ButtonKotakHome(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => HalamanKritik(
-                                    selectedUrl:
-                                        "https://docs.google.com/forms/d/e/1FAIpQLScbi1HxOjwlLmYIu4kLhQ0qQj_PTtkJh0vxvEEnctV27mMg8A/viewform?usp=sf_link"))),
-                        assetKeSvg: 'assets/home/email.svg',
-                        text: 'Kritik dan Saran',
-                      ),
-                      ButtonKotakHome(
-                        onTap: () => _launchMaps(),
-                        assetKeSvg: 'assets/home/rate.svg',
-                        text: 'Rate Kepuasan',
-                      ),
-                      ButtonKotakHome(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => HalamanJurnal(
-                                    selectedUrl:
-                                        "http://www.rsumitradelima.com/index.php/jurnal"))),
-                        assetKeSvg: 'assets/home/library.svg',
-                        text: 'Elektronik Jurnal',
-                      ),
+
+                      SizedBox(height: 10,),
+
+                      // TODO Indicator
+
+                      SizedBox(height: 10,),
+
+                      Container(
+                        width: double.infinity,
+                        height: 35.0,
+                        decoration: BoxDecoration(
+                          color: MyConstants().colorRSMDbg,
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(30.0))
+                        ),
+                      )
                     ],
                   ),
+                ),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: MyConstants().colorRSMDbg,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          ButtonKotakHome(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => ListMenuDaftarOnline())),
+                            // builder: (_) => HalamanUtama(
+                            //     selectedUrl:
+                            //         "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
+                            assetKeSvg: 'assets/home/pendaftaran.svg',
+                            text: 'Pendaftaran Online',
+                          ),
+                          ButtonKotakHome(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => DaftarPoliklinik()),
+                            ),
+                            assetKeSvg: 'assets/home/jadwal-dokter.svg',
+                            text: 'Daftar Poliklinik',
+                          ),
+                          ButtonKotakHome(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => TempatTidur()),
+                            ),
+                            assetKeSvg: 'assets/home/tempat-tidur.svg',
+                            text: 'Ketersediaan Kamar',
+                          ),
+                          ButtonKotakHome(
+                            assetKeSvg: 'assets/home/health-check.svg',
+                            text: 'Periksa Mandiri',
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      IntrinsicHeight(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            ButtonKotakHome(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => HalamanKuisioner(
+                                          selectedUrl:
+                                              "https://docs.google.com/forms/d/e/1FAIpQLSfzGqp_Ji1faeTCuGeMIb8C95CbREFQrau1J7pvCG3tJlS7NQ/viewform?usp=sf_link"))),
+                              assetKeSvg: 'assets/home/rating.svg',
+                              text: 'Kuisioner Rawat Inap',
+                            ),
+                            ButtonKotakHome(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => HalamanKritik(
+                                          selectedUrl:
+                                              "https://docs.google.com/forms/d/e/1FAIpQLScbi1HxOjwlLmYIu4kLhQ0qQj_PTtkJh0vxvEEnctV27mMg8A/viewform?usp=sf_link"))),
+                              assetKeSvg: 'assets/home/email.svg',
+                              text: 'Kritik dan Saran',
+                            ),
+                            ButtonKotakHome(
+                              onTap: () => _launchMaps(),
+                              assetKeSvg: 'assets/home/rate.svg',
+                              text: 'Rate Kepuasan',
+                            ),
+                            ButtonKotakHome(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => HalamanJurnal(
+                                          selectedUrl:
+                                              "http://www.rsumitradelima.com/index.php/jurnal"))),
+                              assetKeSvg: 'assets/home/library.svg',
+                              text: 'Elektronik Jurnal',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
                 )
               ],
             ),
@@ -346,7 +314,7 @@ class ButtonKotakHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(7),
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -356,13 +324,13 @@ class ButtonKotakHome extends StatelessWidget {
               offset: Offset(0, 2), // changes position of shadow
             ),
           ]),
-      width: MediaQuery.of(context).size.width / 4 - 10.0,
+      width: MediaQuery.of(context).size.width / 4 - 15.0,
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -372,7 +340,7 @@ class ButtonKotakHome extends StatelessWidget {
                   width: (MediaQuery.of(context).size.width / 4) - 10.0 - 30.0,
                 )),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Flexible(
                     child: Text(

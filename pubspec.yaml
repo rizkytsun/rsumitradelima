@@ -130,6 +130,7 @@ flutter:
     - assets/kontak/web.png
     - assets/kontak/web1.png
     - assets/berita/igd.jpeg
+    - assets/home/logorsmd.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

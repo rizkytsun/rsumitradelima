@@ -97,22 +97,22 @@ class _LoginState extends State<Login> {
                     iconSize: 24,
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     duration: Duration(milliseconds: 800),
-                    tabBackgroundColor: Colors.grey[800],
+                    tabBackgroundColor: MyConstants().colorJadwalDR,
                     tabs: [
                       GButton(
-                        icon: LineAwesomeIcons.home,
+                        icon: LineAwesomeIcons.home, iconSize: 20,
                         text: 'Beranda',
                       ),
                       GButton(
-                        icon: LineAwesomeIcons.globe,
+                        icon: LineAwesomeIcons.globe, iconSize: 20,
                         text: 'Berita',
                       ),
                       GButton(
-                        icon: LineAwesomeIcons.phone,
+                        icon: LineAwesomeIcons.phone, iconSize: 20,
                         text: 'Kontak',
                       ),
                       GButton(
-                        icon: LineAwesomeIcons.key,
+                        icon: LineAwesomeIcons.key, iconSize: 20,
                         text: 'Admin',
                       ),
                     ],
