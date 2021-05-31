@@ -32,6 +32,16 @@ class MyContainer extends StatelessWidget {
   }
 }
 
+class MyConstants2 {
+  final Color colorRSMDblue = Color(0xFF284b8c);
+  final Color colorRSMDgreen = Color(0xFF00a859);
+  final Color colorRSMDbg = Color(0xFFFFFFFF);
+  final Color colorJadwalDR = Color(0xFF018bb8);
+  final Color colorHalamanAwal = Color(0xFFffd9d9);
+  // final Color colorJadwalDR = Color(0xFF8DD1EA);
+  final Color colorBeranda = Color(0xFFffb5b5);
+}
+
 class PostAdopsiCard extends StatelessWidget {
   PostAdopsiCard({
     this.imgSource,

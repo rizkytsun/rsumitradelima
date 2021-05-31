@@ -40,6 +40,7 @@ dependencies:
   splashscreen:
   full_screen_image: any
   carousel_slider: any
+  dots_indicator: any
   
 
 dev_dependencies:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
+import 'package:rsumitradelima/page/jadwaldokter/DetailDokter/DokterDetail.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalAnak.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalBedah.dart';
 import 'package:rsumitradelima/page/jadwaldokter/jadwalBedahPlastik.dart';
@@ -210,7 +211,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => JadwalPatologi()),
+                    MaterialPageRoute(builder: (_) => DokterDetailPage()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/patologi.png',

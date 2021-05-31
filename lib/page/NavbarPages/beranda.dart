@@ -19,6 +19,10 @@ class BerandaPage extends StatefulWidget {
 }
 
 class _BerandaPageState extends State<BerandaPage> {
+  static final List<String> imgSlider = [
+    'assets/berita/igd.jpeg'
+        'assets/timeline.png'
+  ];
   static int timelinePage = 1;
 
   final PageController controller = PageController(
@@ -123,16 +127,19 @@ class _BerandaPageState extends State<BerandaPage> {
                   color: MyConstants().colorJadwalDR,
                   child: Column(
                     children: <Widget>[
-
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Material(
                         color: Colors.transparent,
-                          child: Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             IconButton(
-                              icon: Icon(Icons.notifications_none, size: 25,),
-                              
+                              icon: Icon(
+                                Icons.notifications_none,
+                                size: 25,
+                              ),
                               onPressed: () {},
                             ),
                             Container(
@@ -143,157 +150,177 @@ class _BerandaPageState extends State<BerandaPage> {
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 30.0, vertical: 8.0),
-                                  child: Text(
-                                    'TIMELINE',
-                                    style: TextStyle(
-                                      color: MyConstants().colorJadwalDR,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.0,),
+                                child: Text(
+                                  'TIMELINE',
+                                  style: TextStyle(
+                                    color: MyConstants().colorJadwalDR,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0,
                                   ),
+                                ),
                               ),
                             ),
                             IconButton(
-                              icon: Icon(Icons.info_outline, size: 25,),
+                              icon: Icon(
+                                Icons.info_outline,
+                                size: 25,
+                              ),
                               onPressed: () {},
                             ),
                           ],
                         ),
                       ),
-
-                      SizedBox(height: 10,),
-
-                      CarouselSlider(
-                        options: CarouselOptions(
-                          height: 200,
-                          enlargeCenterPage: true,
-                          autoPlay: true,
-                          aspectRatio: 16 / 9,
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enableInfiniteScroll: true,
-                          autoPlayAnimationDuration: Duration(milliseconds: 1000),
-                          viewportFraction: 0.7,
-                        ),
-                        items: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15.0),
-                              image: DecorationImage(
-                                image: AssetImage('assets/timeline.png'),
-                              ),
-                            ),
-                          )
-                        ],
+                      SizedBox(
+                        height: 10,
                       ),
-
-                      SizedBox(height: 10,),
-
-                      // TODO Indicator
-
-                      SizedBox(height: 10,),
-
+                      CarouselSlider(
+                          options: CarouselOptions(
+                            height: 250,
+                            enlargeCenterPage: true,
+                            autoPlay: true,
+                            aspectRatio: 16 / 9,
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enableInfiniteScroll: true,
+                            autoPlayAnimationDuration:
+                                Duration(milliseconds: 1000),
+                            viewportFraction: 0.6,
+                            initialPage: 5,
+                          ),
+                          items: [
+                            // "assets/timeline.png",
+                            // "assets/timeline.png",
+                            // "assets/timeline.png",
+                            // "assets/timeline.png",
+                            // "assets/timeline.png",
+                            "http://www.rsumitradelima.com/assets/timeline/gratis_bayi.png",
+                            "http://www.rsumitradelima.com/assets/timeline/WhatsApp_Image_2021-05-19_at_07_53_43.jpeg",
+                            "http://www.rsumitradelima.com/assets/timeline/WhatsApp_Image_2021-05-21_at_07_37_59.jpeg",
+                          ].map((i) {
+                            return Builder(builder: (BuildContext context) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  image: DecorationImage(
+                                    image: NetworkImage(i),
+                                  ),
+                                ),
+                              );
+                            });
+                          }).toList()),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(), // TODO Dots Indicator
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Container(
                         width: double.infinity,
                         height: 35.0,
                         decoration: BoxDecoration(
-                          color: MyConstants().colorRSMDbg,
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(30.0))
-                        ),
+                            color: MyConstants().colorRSMDbg,
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(30.0))),
                       )
                     ],
                   ),
                 ),
                 Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: MyConstants().colorRSMDbg,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          ButtonKotakHome(
-                            onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => ListMenuDaftarOnline())),
-                            // builder: (_) => HalamanUtama(
-                            //     selectedUrl:
-                            //         "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
-                            assetKeSvg: 'assets/home/pendaftaran.svg',
-                            text: 'Pendaftaran Online',
-                          ),
-                          ButtonKotakHome(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (_) => DaftarPoliklinik()),
-                            ),
-                            assetKeSvg: 'assets/home/jadwal-dokter.svg',
-                            text: 'Daftar Poliklinik',
-                          ),
-                          ButtonKotakHome(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (_) => TempatTidur()),
-                            ),
-                            assetKeSvg: 'assets/home/tempat-tidur.svg',
-                            text: 'Ketersediaan Kamar',
-                          ),
-                          ButtonKotakHome(
-                            assetKeSvg: 'assets/home/health-check.svg',
-                            text: 'Periksa Mandiri',
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      IntrinsicHeight(
-                        child: Row(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: MyConstants().colorRSMDbg,
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(20.0)),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             ButtonKotakHome(
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => HalamanKuisioner(
-                                          selectedUrl:
-                                              "https://docs.google.com/forms/d/e/1FAIpQLSfzGqp_Ji1faeTCuGeMIb8C95CbREFQrau1J7pvCG3tJlS7NQ/viewform?usp=sf_link"))),
-                              assetKeSvg: 'assets/home/rating.svg',
-                              text: 'Kuisioner Rawat Inap',
+                                      builder: (_) => ListMenuDaftarOnline())),
+                              // builder: (_) => HalamanUtama(
+                              //     selectedUrl:
+                              //         "http://rsumitradelima.com:8080/webapps/epasien/login.php"))),
+                              assetKeSvg: 'assets/home/pendaftaran.svg',
+                              text: 'Pendaftaran Online',
                             ),
                             ButtonKotakHome(
                               onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => HalamanKritik(
-                                          selectedUrl:
-                                              "https://docs.google.com/forms/d/e/1FAIpQLScbi1HxOjwlLmYIu4kLhQ0qQj_PTtkJh0vxvEEnctV27mMg8A/viewform?usp=sf_link"))),
-                              assetKeSvg: 'assets/home/email.svg',
-                              text: 'Kritik dan Saran',
-                            ),
-                            ButtonKotakHome(
-                              onTap: () => _launchMaps(),
-                              assetKeSvg: 'assets/home/rate.svg',
-                              text: 'Rate Kepuasan',
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => DaftarPoliklinik()),
+                              ),
+                              assetKeSvg: 'assets/home/jadwal-dokter.svg',
+                              text: 'Daftar Poliklinik',
                             ),
                             ButtonKotakHome(
                               onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => HalamanJurnal(
-                                          selectedUrl:
-                                              "http://www.rsumitradelima.com/index.php/jurnal"))),
-                              assetKeSvg: 'assets/home/library.svg',
-                              text: 'Elektronik Jurnal',
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => TempatTidur()),
+                              ),
+                              assetKeSvg: 'assets/home/tempat-tidur.svg',
+                              text: 'Ketersediaan Kamar',
+                            ),
+                            ButtonKotakHome(
+                              assetKeSvg: 'assets/home/health-check.svg',
+                              text: 'Periksa Mandiri',
                             ),
                           ],
                         ),
-                      ),
-                    ],
-                  )
-                )
+                        SizedBox(
+                          height: 20,
+                        ),
+                        IntrinsicHeight(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonKotakHome(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => HalamanKuisioner(
+                                            selectedUrl:
+                                                "https://docs.google.com/forms/d/e/1FAIpQLSfzGqp_Ji1faeTCuGeMIb8C95CbREFQrau1J7pvCG3tJlS7NQ/viewform?usp=sf_link"))),
+                                assetKeSvg: 'assets/home/rating.svg',
+                                text: 'Kuisioner Rawat Inap',
+                              ),
+                              ButtonKotakHome(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => HalamanKritik(
+                                            selectedUrl:
+                                                "https://docs.google.com/forms/d/e/1FAIpQLScbi1HxOjwlLmYIu4kLhQ0qQj_PTtkJh0vxvEEnctV27mMg8A/viewform?usp=sf_link"))),
+                                assetKeSvg: 'assets/home/email.svg',
+                                text: 'Kritik dan Saran',
+                              ),
+                              ButtonKotakHome(
+                                onTap: () => _launchMaps(),
+                                assetKeSvg: 'assets/home/rate.svg',
+                                text: 'Rate Kepuasan',
+                              ),
+                              ButtonKotakHome(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => HalamanJurnal(
+                                            selectedUrl:
+                                                "http://www.rsumitradelima.com/index.php/jurnal"))),
+                                assetKeSvg: 'assets/home/library.svg',
+                                text: 'Elektronik Jurnal',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ))
               ],
             ),
           ),

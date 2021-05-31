@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:full_screen_image/full_screen_image.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:rsumitradelima/component/ContainerAndButtons.dart';
 import 'package:rsumitradelima/component/Dialogs.dart';
+import 'package:http/http.dart' as http;
 
 class DokterDetailPage extends StatefulWidget {
   @override
@@ -16,7 +20,32 @@ class _DokterDetailPageState extends State<DokterDetailPage>
   @override
   void initState() {
     super.initState();
+    getAPIaccess();
     _tabController = TabController(length: 3, vsync: this);
+  }
+
+  var data;
+  bool isLoadingData = true;
+  bool isData = false;
+
+  var listDokterAPI;
+
+  Future getAPIaccess() async {
+    final String url =
+        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=pa';
+    var result = await http
+        .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
+
+    setState(() {
+      if (result.statusCode == 200) {
+        var content = json.decode(result.body);
+        if (content['status'] == 'sukses') {
+          listDokterAPI = content['data'];
+          isData = true;
+        }
+      }
+      isLoadingData = false;
+    });
   }
 
   @override
@@ -31,7 +60,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
       body: Column(
         children: <Widget>[
           Container(
-            color: Colors.orange[400],
+            color: MyConstants2().colorJadwalDR,
             child: Material(
               color: Colors.transparent,
               child: Column(
@@ -94,8 +123,8 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                           height: 100.0,
                           child: CircleAvatar(
                             radius: 20.0,
-                            backgroundImage: NetworkImage(
-                                'https://tecnobella.com/wp-content/uploads/2018/11/our-team-04.jpg'),
+                            backgroundImage:
+                                AssetImage('assets/dokter/luqman.png'),
                           ),
                         ),
                         SizedBox(
@@ -105,7 +134,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Megumi Kobayashi',
+                              isLoadingData ? '-' : listDokterAPI[0]["nm_dokter"],
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
@@ -120,34 +149,6 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                                 ),
                                 Text(
                                   ' Malang',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                Icon(
-                                  LineIcons.user,
-                                  size: 15.0,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  ' 123 Pengikut',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                Icon(
-                                  LineIcons.check,
-                                  size: 15.0,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  ' Terpercaya',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],
@@ -169,7 +170,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                         child: Text('Afiliasi'),
                       ),
                       Tab(
-                        child: Text('Penilaian'),
+                        child: Text('Jadwal Praktik'),
                       ),
                     ],
                   )
@@ -233,7 +234,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  'Kucing',
+                                  'Patalogi Anatomi',
                                   style: TextStyle(color: Colors.grey),
                                 ),
                               ],
@@ -271,7 +272,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  '23 hewan tertangani',
+                                  '23 Pasien tertangani',
                                   style: TextStyle(color: Colors.grey),
                                 ),
                                 SizedBox(
@@ -377,11 +378,12 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                             child: ListTile(
                               leading: CircleAvatar(
                                 radius: 20.0,
-                                backgroundImage: NetworkImage(
-                                    'https://tecnobella.com/wp-content/uploads/2018/11/our-team-04.jpg'),
+                                backgroundImage:
+                                    AssetImage('assets/rsmd_logo.png'),
                               ),
-                              title: Text('Shelter Kucing Aminah Malang'),
-                              subtitle: Text('Dieng, Malang'),
+                              title: Text('RSU Mitra Delima'),
+                              subtitle:
+                                  Text('Jl. Bulupayung 1B Krebet, Malang'),
                             ),
                           ),
                           SizedBox(
@@ -396,228 +398,27 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                                 backgroundImage: NetworkImage(
                                     'https://tecnobella.com/wp-content/uploads/2018/11/our-team-04.jpg'),
                               ),
-                              title: Text('Cattery Arjosari'),
-                              subtitle: Text('Arjosari, Malang'),
+                              title: Text('RSUD Kanjuruhan'),
+                              subtitle: Text('Kepanjen, Malang'),
                             ),
                           ),
                           SizedBox(
-                            height: 15.0,
+                            height: 10.0,
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          MyContainer(
-                            width: double.infinity,
-                            padding: EdgeInsets.all(10.0),
-                            child: Column(
-                              children: <Widget>[
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.grey,
-                                      size: 15.0,
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      'oleh ',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Tsukasa Kawagoto',
-                                    ),
-                                    Text(
-                                      ' 5 bulan lalu',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Text(
-                                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                              ],
+                  Scaffold(
+                    body: isLoadingData
+                        ? Center(child: CircularProgressIndicator())
+                        : ListView.builder(
+                            itemCount: listDokterAPI.length,
+                            itemBuilder: (context, i) => ListDokter(
+                              nama: listDokterAPI[i]["nm_dokter"],
+                              listJadwal: listDokterAPI[i]["det_dokter"],
                             ),
                           ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          MyContainer(
-                            width: double.infinity,
-                            padding: EdgeInsets.all(10.0),
-                            child: Column(
-                              children: <Widget>[
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.grey,
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.grey,
-                                      size: 15.0,
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      'oleh ',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Willer Gross',
-                                    ),
-                                    Text(
-                                      ' 1 bulan lalu',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Text(
-                                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          MyContainer(
-                            width: double.infinity,
-                            padding: EdgeInsets.all(10.0),
-                            child: Column(
-                              children: <Widget>[
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.yellow[600],
-                                      size: 15.0,
-                                    ),
-                                    Icon(
-                                      LineIcons.star,
-                                      color: Colors.grey,
-                                      size: 15.0,
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      'oleh ',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Ahmad Bahrudin',
-                                    ),
-                                    Text(
-                                      ' 2 minggu lalu',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Text(
-                                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -636,7 +437,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
               children: <Widget>[
                 Expanded(
                     child: FlatButton(
-                        color: Colors.orange[400],
+                        color: MyConstants2().colorJadwalDR,
                         onPressed: () => showDialog(
                             barrierDismissible: true,
                             context: context,
@@ -655,7 +456,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                 ),
                 Expanded(
                     child: FlatButton(
-                        color: Colors.orange[400],
+                        color: MyConstants2().colorJadwalDR,
                         onPressed: () => showDialog(
                             barrierDismissible: true,
                             context: context,
@@ -667,12 +468,85 @@ class _DokterDetailPageState extends State<DokterDetailPage>
                                               Navigator.pop(context),
                                           child: Text('OK'))
                                     ])),
-                        child: Text('Pemesanan',
+                        child: Text('Daftar Poliklinik',
                             style: TextStyle(color: Colors.white)))),
               ],
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class ListDokter extends StatelessWidget {
+  ListDokter({this.nama, this.listJadwal});
+
+  final String nama;
+  final List<dynamic> listJadwal;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new Container(
+        padding: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 4),
+              )
+            ]),
+        child: ListTile(
+          title: Column(
+            children: <Widget>[
+              Text(
+                nama,
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              Divider(color: Colors.grey),
+            ],
+          ),
+          subtitle: Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: listJadwal.length,
+              itemBuilder: (context, i) => Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Flexible(
+                      child: Text(
+                        listJadwal[i]['hari_kerja'],
+                        style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                      ),
+                    ),
+                    Text(
+                      listJadwal[i]['jam_mulai'] +
+                          " - " +
+                          listJadwal[i]['jam_selesai'],
+                      style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          dense: true,
+        ),
       ),
     );
   }

@@ -104,7 +104,7 @@ class ListDokter extends StatelessWidget {
         child: ListTile(
           leading: FullScreenWidget(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(50),
               child: Container(
                 width: 50,
                 height: 50,
@@ -154,7 +154,7 @@ class ListDokter extends StatelessWidget {
                           " - " +
                           listJadwal[i]['jam_selesai'],
                       style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                    )
+                    ),
                   ],
                 ),
               ),

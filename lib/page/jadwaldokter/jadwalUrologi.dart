@@ -103,14 +103,17 @@ class ListDokter extends StatelessWidget {
             ]),
         child: ListTile(
           leading: FullScreenWidget(
-            child: Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  fit: BoxFit.contain,
-                  image: AssetImage(gambar),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  image: DecorationImage(
+                    fit: BoxFit.contain,
+                    image: AssetImage(gambar),
+                  ),
                 ),
               ),
             ),

@@ -74,45 +74,49 @@ class _LoginState extends State<Login> {
       backgroundColor: MyConstants().colorRSMDbg,
       body: _getBody(_selectedIndex),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(10.0),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.3),
-                spreadRadius: 2,
-                blurRadius: 4,
+                spreadRadius: 1,
+                blurRadius: 5,
                 offset: Offset(0, 2), // changes position of shadow
               ),
             ],
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(10),
           ),
           child: SafeArea(
             child: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(5),
                 child: GNav(
-                    gap: 8,
+                    gap: 5,
                     activeColor: Colors.white,
-                    iconSize: 24,
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    iconSize: 20,
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     duration: Duration(milliseconds: 800),
                     tabBackgroundColor: MyConstants().colorJadwalDR,
                     tabs: [
                       GButton(
-                        icon: LineAwesomeIcons.home, iconSize: 20,
+                        icon: LineAwesomeIcons.home,
+                        iconSize: 20,
                         text: 'Beranda',
                       ),
                       GButton(
-                        icon: LineAwesomeIcons.globe, iconSize: 20,
+                        icon: LineAwesomeIcons.globe,
+                        iconSize: 20,
                         text: 'Berita',
                       ),
                       GButton(
-                        icon: LineAwesomeIcons.phone, iconSize: 20,
+                        icon: LineAwesomeIcons.phone,
+                        iconSize: 20,
                         text: 'Kontak',
                       ),
                       GButton(
-                        icon: LineAwesomeIcons.key, iconSize: 20,
+                        icon: LineAwesomeIcons.key,
+                        iconSize: 20,
                         text: 'Admin',
                       ),
                     ],
