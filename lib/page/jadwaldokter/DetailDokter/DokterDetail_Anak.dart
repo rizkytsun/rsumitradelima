@@ -32,7 +32,7 @@ class _DokterDetailPageState extends State<DokterDetailPage>
 
   Future getAPIaccess() async {
     final String url =
-        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=pa';
+        'http://rsumitradelima.com:8080/api-rsmd/index.php/dokter?fungsi=5&kd_poli=ana';
     var result = await http
         .get(Uri.encodeFull(url), headers: {'accept': 'application/json'});
 

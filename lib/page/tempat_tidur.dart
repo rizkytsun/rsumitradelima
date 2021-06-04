@@ -120,16 +120,16 @@ class ListTempatTidur extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(5.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
-                  spreadRadius: 2,
-                  blurRadius: 7,
-                  offset: Offset(0, 2),
+                  spreadRadius: 1,
+                  blurRadius: 1,
+                  offset: Offset(0, 1),
                 )
               ]),
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(5.0),
           child: Row(children: <Widget>[
             Container(
                 width: 85.0,

@@ -78,9 +78,9 @@ class ButtonKotakDaftar extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3), // changes position of shadow
+              spreadRadius: 1,
+              blurRadius: 2,
+              offset: Offset(0, 1), // changes position of shadow
             ),
           ]),
       width: MediaQuery.of(context).size.width / 1 - 15.0,

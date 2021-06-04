@@ -231,50 +231,47 @@ class ListJadwal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12, top: 7, bottom: 5),
-      child: new Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(7),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                spreadRadius: 2,
-                blurRadius: 6,
-                offset: Offset(0, 2),
+    return new Container(
+      decoration: BoxDecoration(
+          // borderRadius: BorderRadius.circular(5),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 0,
+              offset: Offset(0, 0),
+            )
+          ]),
+      padding: new EdgeInsets.all(10),
+      child: new Center(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: new Row(
+            children: <Widget>[
+              Image.asset(
+                gambar,
+                width: (MediaQuery.of(context).size.width / 10) - 5.0,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              new Container(
+                padding: new EdgeInsets.all(20.0),
+                child: new Center(
+                    child: new Column(
+                  children: <Widget>[
+                    new Text(
+                      klinik,
+                      style: new TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ],
+                )),
               )
-            ]),
-        padding: new EdgeInsets.all(10),
-        child: new Center(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: new Row(
-              children: <Widget>[
-                Image.asset(
-                  gambar,
-                  width: (MediaQuery.of(context).size.width / 10) - 5.0,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                new Container(
-                  padding: new EdgeInsets.all(20.0),
-                  child: new Center(
-                      child: new Column(
-                    children: <Widget>[
-                      new Text(
-                        klinik,
-                        style: new TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                    ],
-                  )),
-                )
-              ],
-            ),
+            ],
           ),
         ),
       ),

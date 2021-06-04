@@ -138,6 +138,7 @@ class _BerandaPageState extends State<BerandaPage> {
                             IconButton(
                               icon: Icon(
                                 Icons.notifications_none,
+                                color: Colors.white,
                                 size: 25,
                               ),
                               onPressed: () {},
@@ -163,6 +164,7 @@ class _BerandaPageState extends State<BerandaPage> {
                             IconButton(
                               icon: Icon(
                                 Icons.info_outline,
+                                color: Colors.white,
                                 size: 25,
                               ),
                               onPressed: () {},
@@ -341,14 +343,14 @@ class ButtonKotakHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(5),
           color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 6,
-              offset: Offset(0, 2), // changes position of shadow
+              spreadRadius: 1,
+              blurRadius: 2,
+              offset: Offset(0, 1), // changes position of shadow
             ),
           ]),
       width: MediaQuery.of(context).size.width / 4 - 15.0,

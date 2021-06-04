@@ -6,8 +6,6 @@ import '../../components.dart';
 
 class HalamanPendaftaran extends StatefulWidget {
   final String selectedUrl;
-  
-
 
   HalamanPendaftaran({
     @required this.selectedUrl,
@@ -30,9 +28,8 @@ class _HalamanPendaftaranState extends State<HalamanPendaftaran> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyConstants().colorJadwalDR,
-        title: Text("PENDAFTARAN VIA APLIKASI"),
+        title: Text("PENDAFTARAN VIA WEBSITE"),
       ),
-
       body: Stack(
         children: <Widget>[
           WebView(
@@ -45,7 +42,13 @@ class _HalamanPendaftaranState extends State<HalamanPendaftaran> {
               });
             },
           ),
-          isLoading ? Center(child: CircularProgressIndicator(backgroundColor: Colors.redAccent, valueColor: AlwaysStoppedAnimation(Colors.green),)) : Stack(),
+          isLoading
+              ? Center(
+                  child: CircularProgressIndicator(
+                  backgroundColor: Colors.redAccent,
+                  valueColor: AlwaysStoppedAnimation(Colors.green),
+                ))
+              : Stack(),
         ],
       ),
     );
