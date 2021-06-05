@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
 import 'package:full_screen_image/full_screen_image.dart';
+import 'package:rsumitradelima/page/jadwaldokter/DetailDokter/DokterDetail.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -67,10 +68,13 @@ class _JadwalAnakState extends State<JadwalAnak> {
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: listDokterAPI.length,
-              itemBuilder: (context, i) => ListDokter(
-                gambar: listAsset[i],
-                nama: listDokterAPI[i]["nm_dokter"],
-                listJadwal: listDokterAPI[i]["det_dokter"],
+              itemBuilder: (context, i) => GestureDetector(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DokterDetailPage(idDokter: listDokterAPI[i]["kd_dokter"],))),
+                  child: ListDokter(
+                  gambar: listAsset[i],
+                  nama: listDokterAPI[i]["nm_dokter"],
+                  listJadwal: listDokterAPI[i]["det_dokter"],
+                ),
               ),
             ),
     );

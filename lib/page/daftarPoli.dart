@@ -211,7 +211,7 @@ class _DaftarPoliklinikState extends State<DaftarPoliklinik> {
           InkWell(
               onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => DokterDetailPage()),
+                    MaterialPageRoute(builder: (_) => JadwalPatologi()),
                   ),
               child: ListJadwal(
                 gambar: 'assets/jadwaldokter/patologi.png',

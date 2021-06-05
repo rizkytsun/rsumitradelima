@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rsumitradelima/components.dart';
 import 'package:full_screen_image/full_screen_image.dart';
+import 'package:rsumitradelima/page/jadwaldokter/DetailDokter/DokterDetail.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -67,10 +68,13 @@ class _JadwalKandunganState extends State<JadwalKandungan> {
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: listDokterAPI.length,
-              itemBuilder: (context, i) => ListDokter(
-                gambar: listAsset[i],
-                nama: listDokterAPI[i]["nm_dokter"],
-                listJadwal: listDokterAPI[i]["det_dokter"],
+              itemBuilder: (context, i) => GestureDetector(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DokterDetailPage(idDokter: listDokterAPI[i]["kd_dokter"],))),
+                  child: ListDokter(
+                  gambar: listAsset[i],
+                  nama: listDokterAPI[i]["nm_dokter"],
+                  listJadwal: listDokterAPI[i]["det_dokter"],
+                ),
               ),
             ),
     );
@@ -86,82 +90,80 @@ class ListDokter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: new Container(
-        padding: EdgeInsets.all(15.0),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                spreadRadius: 2,
-                blurRadius: 4,
-                offset: Offset(0, 4),
-              )
-            ]),
-        child: ListTile(
-          leading: FullScreenWidget(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  image: DecorationImage(
-                    fit: BoxFit.contain,
-                    image: AssetImage(gambar),
-                  ),
+    return new Container(
+      padding: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 0,
+              offset: Offset(0, 0),
+            )
+          ]),
+      child: ListTile(
+        leading: FullScreenWidget(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                image: DecorationImage(
+                  fit: BoxFit.contain,
+                  image: AssetImage(gambar),
                 ),
               ),
             ),
           ),
-          title: Column(
-            children: <Widget>[
-              Text(
-                nama,
-                style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-              Divider(color: Colors.grey),
-            ],
-          ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: listJadwal.length,
-              itemBuilder: (context, i) => Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Flexible(
-                      child: Text(
-                        listJadwal[i]['hari_kerja'],
-                        style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                      ),
-                    ),
-                    Text(
-                      listJadwal[i]['jam_mulai'] +
-                          " - " +
-                          listJadwal[i]['jam_selesai'],
-                      style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          dense: true,
         ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              nama,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
+            // Divider(color: Colors.grey),
+          ],
+        ),
+        // subtitle: Padding(
+        //   padding: const EdgeInsets.only(top: 10.0),
+        //   child: ListView.builder(
+        //     shrinkWrap: true,
+        //     physics: NeverScrollableScrollPhysics(),
+        //     itemCount: listJadwal.length,
+        //     itemBuilder: (context, i) => Padding(
+        //       padding: const EdgeInsets.all(5.0),
+        //       child: Row(
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //         mainAxisSize: MainAxisSize.max,
+        //         children: <Widget>[
+        //           // Flexible(
+        //           //   child: Text(
+        //           //     listJadwal[i]['hari_kerja'],
+        //           //     style: TextStyle(fontSize: 14.0, color: Colors.grey),
+        //           //   ),
+        //           // ),
+        //           // Text(
+        //           //   listJadwal[i]['jam_mulai'] +
+        //           //       " - " +
+        //           //       listJadwal[i]['jam_selesai'],
+        //           //   style: TextStyle(fontSize: 14.0, color: Colors.grey),
+        //           // ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        dense: true,
       ),
     );
   }
